@@ -1,0 +1,42 @@
+.main-page-logo {
+    height: 18px;
+    width: 112px;
+    border-radius: 0px;
+}
+
+.main-page-frame {
+    padding-top: 3rem;
+    max-height: 482px;
+    max-width: 781px;
+
+    border-radius: 0px;
+
+}
+
+.main form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10rem;
+
+}
+
+.main form input {
+    color: #fff;
+    height: 60px;
+    width: 387px;
+    border: none;
+    border-radius: 5px;
+    background: #62A1EB;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    cursor: pointer;
+}
+.btnup{
+    padding-bottom: 2rem;
+}
+
+.main form input:hover {
+    background: #3384df; 
+}

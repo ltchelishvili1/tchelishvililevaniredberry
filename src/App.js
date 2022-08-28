@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Link,
+} from "react-router-dom";
+import Header from './components/parts/Header/Header';
+import { useEffect } from 'react';
+import Attributes from './components/parts/Attributes/Attributes';
+import EmployeeInfo from './components/parts/Attributes/EmployeeInfo/EmployeeInfo'
+import LaptopInfo from './components/parts/Attributes/LaptopInfo/LaptopInfo';
 
 function App() {
+  useEffect(() => {
+    fetch("https://pcfy.redberryinternship.ge/api/teams")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Header />} />
+        <Route path="attributes" element={<Attributes />}>
+          <Route path="employeeinfo" element={<EmployeeInfo />} />
+          <Route path="laptopinfo" element={<LaptopInfo/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
