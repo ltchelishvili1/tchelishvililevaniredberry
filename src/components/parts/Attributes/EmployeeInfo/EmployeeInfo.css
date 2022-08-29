@@ -1,0 +1,67 @@
+.empinfo {
+    background: #fff;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    max-width: 1226px;
+    zoom: 1.1;
+
+}
+
+.empinfo form {
+    padding-top: 4rem;
+
+}
+
+.empinfo input {
+    border-radius: 8px;
+    border: 1px solid #8AC0E2
+}
+
+.namesurname {
+    display: flex;
+
+}
+
+.namesurname .name {
+
+    height: 134px;
+    width: 456px;
+    left: 967px;
+    top: 245px;
+    border-radius: 0px;
+
+
+}
+
+
+.pholder {
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.namesurname input {
+    height: 35px;
+    width: 308px;
+
+
+}
+
+.empinfo select {
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    background: #EBEBEB;
+}
+.selects{
+    padding-top: 2rem;
+}
+.selects .team{
+    padding-bottom: 3rem;
+}

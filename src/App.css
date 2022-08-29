@@ -1,7 +1,16 @@
+@font-face {
+  font-family: georgian;
+  src: url(./components//assets/font/HelveticaNeue.ttc);
+}
+body{
+  background: rgba(59, 59, 59, 0.294);
+}
 .App {
   text-align: center;
 }
-
+*{
+  font-family: georgian;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
