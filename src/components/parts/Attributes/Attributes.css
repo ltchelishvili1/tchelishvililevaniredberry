@@ -15,18 +15,30 @@
 
 
 }
+
 .attrtxt:after {
     content: '';
     position: absolute;
     width: 15%;
     transform: scaleX(0);
     height: 2px;
-    
+
     background-color: #5ECE7B;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
+
 .attrtxt:hover:after {
-    
+
     transform: scaleX(1);
+}
+
+.logoimage {
+    padding: 4rem 0 2rem 0;
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    left: calc(50% - 85px/2 - 0.5px);
+   
+
 }
