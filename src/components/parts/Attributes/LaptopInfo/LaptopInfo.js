@@ -7,10 +7,6 @@ const LaptopInfo = (props) => {
  
 
   const [laptopInfo, setlaptopInfo] = useState(JSON.parse(localStorage.getItem("LaptInfo")) ||{
-    image: {
-      url: null,
-      preview: null,
-    },
     laptopnName: "",
     laptopBrand: "",
     CPU: "",
@@ -20,7 +16,8 @@ const LaptopInfo = (props) => {
     memoryType: "",
     purchaseDate: "",
     laptopPrice: "",
-    laptopCond: ""
+    laptopCond: "",
+    img: ""
 
   })
   
@@ -29,48 +26,15 @@ const LaptopInfo = (props) => {
      toDay = new Date().toISOString().substring(0, 10);
   }
   function handleFile(e) {
-    if (!e.target.files || e.target.files.length === 0) {
-      setlaptopInfo({
-        ...laptopInfo,
-        image: {
-          ...laptopInfo.image,
-          url: undefined
-        }
-      })
-      return
-    }
-    localStorage.setItem("file",JSON.stringify(e.target.files[0]))
     setlaptopInfo({
       ...laptopInfo,
-      image: {
-        ...laptopInfo.image,
-        url: e.target.files[0]
-      }
-    })
+      img:  URL.createObjectURL(e.target.files[0])
+    });
+
+   
   }
 
-  useEffect(() => {
-    if (!laptopInfo.image.url) {
-      setlaptopInfo({
-        ...laptopInfo,
-        image: {
-          ...laptopInfo.image,
-          preview: undefined
-        }
-      })
-      return
-    }
-
-    const objectUrl = URL.createObjectURL(laptopInfo.image.url)
-    setlaptopInfo({
-      ...laptopInfo,
-      image: {
-        ...laptopInfo.image,
-        preview: objectUrl
-      }
-    })
-    return () => URL.revokeObjectURL(objectUrl)
-  }, [laptopInfo.image.url])
+  
   useEffect(() => {
    
   
@@ -78,11 +42,11 @@ const LaptopInfo = (props) => {
   }, [laptopInfo]);
   return (
     <div className=' laptopinfo'>
-
+{console.log(laptopInfo)}
       <div className='container'>
         <div className='top'>
           <div className='uploadimage'>
-            {laptopInfo.image.url && <img className='uploadedimage' src={laptopInfo.image.preview} />}
+            {laptopInfo.img && <img className='uploadedimage' alt='YOUR SELECTED PHOTO' src={laptopInfo.img? laptopInfo.img: JSON.parse(localStorage.getItem("LaptInfo")).img} />}
             <div className='contents'>
               <p>ჩააგდე ან ატვირთე</p>
               <p style={{ transform: "translateY(-70%)", paddingBottom: "1rem" }}>ლეპტოპის ფოტო</p>
@@ -98,14 +62,14 @@ const LaptopInfo = (props) => {
           <div className='laptopnameandbrand'>
             <div className='laptopname'>
               <p className='lnamep'>ლეპტოპის სახელი</p>
-              <input value={laptopInfo.laptopnName} style={{ border: "1px solid #8AC0E2" }} onChange={(e) => {
+              <input  style={/^[a-zA-z0-9,!@#$%^&*()_+=\s]+$/g.test(laptopInfo.laptopnName)||laptopInfo.laptopnName==""? { border: "1px solid #8AC0E2" } : { border: "1px solid red" } } value={laptopInfo.laptopnName}  onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
                   laptopnName: e.target.value
                 })
               }} type="text" />
-              <p className='holder'>
-                <span>ლათინური ასოები, ციფრები, !@#$%^&*()_+= </span>
+              <p className='holder' >
+                <span style={/^[a-zA-z0-9,!@#$%^&*()_+=\s]+$/g.test(laptopInfo.laptopnName)||laptopInfo.laptopnName==""? null: {color:"red"}}>ლათინური ასოები, ციფრები, !@#$%^&*()_+= </span>
               </p>
             </div>
             <div className='laptopbrand'>
