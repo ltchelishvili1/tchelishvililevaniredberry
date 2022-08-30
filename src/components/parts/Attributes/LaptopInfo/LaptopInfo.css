@@ -197,3 +197,28 @@ input[type='radio']::after {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.submit {
+  color: #fff;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 176px;
+  height: 30px;
+  background: #62A1EB;
+  cursor: pointer;
+  border: none;
+}
+
+.verybottom{
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.submitbutton input {
+  border-radius: 8px;
+}

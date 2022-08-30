@@ -21,7 +21,7 @@ const EmployeeInfo = (props) => {
   }
 
   function ValidateName(name) {
-  {console.log(numberValidation())}
+
     if (name == null || name == "") {
       return false;
     }
@@ -35,6 +35,18 @@ const EmployeeInfo = (props) => {
     }
   }
   function handleClick(){
+    if(EmpInfo.name==""){
+      document.getElementById("name").style.border = "1px solid red"
+    }
+    if(EmpInfo.surname==""){
+      document.getElementById("surname").style.border = "1px solid red"
+    }
+    if(EmpInfo.mail==""){
+      document.getElementById("mail").style.border = "1px solid red"
+    }
+    if(EmpInfo.number==""){
+      document.getElementById("number").style.border = "1px solid red"
+    }
     if(EmpInfo.team.name==""){
       document.getElementById("teamSelect").style.border = "1px solid red"
     }
@@ -44,13 +56,15 @@ const EmployeeInfo = (props) => {
     if(!ValidateName(EmpInfo.name)
     &&!ValidateName(EmpInfo.surname)
     &&numberValidation()&&EmpInfo.mail.endsWith("@redberry.ge")
-    &&EmpInfo.position!==null){
-    navigate("/attributes/laptopinfo")
+    &&EmpInfo.position!==null&&EmpInfo.name!==""&&EmpInfo.surname!==""){
+      return true
+   
     } 
   }
   }
   useEffect(() => {
     localStorage.setItem('EmpInfo', JSON.stringify(EmpInfo));
+    localStorage.setItem("validated", JSON.stringify(handleClick()))
   }, [EmpInfo]);
 
   return (
@@ -61,9 +75,10 @@ const EmployeeInfo = (props) => {
       <form>
         <div className='namesurname'>
           <div className='name'>
+       
             <p>სახელი</p>
               {numberValidation()}
-            <input style={ValidateName(EmpInfo.name) ? { border: "1px solid red" } : { border: "1px solid #8AC0E2" }} value={EmpInfo.name} type="text" onChange={(e) => {
+            <input id='name' style={ValidateName(EmpInfo.name) ? { border: "1px solid red" } : { border: "1px solid #8AC0E2" }} value={EmpInfo.name} type="text" onChange={(e) => {
               setEmpInfo({
                 ...EmpInfo,
                 name: e.target.value
@@ -82,7 +97,7 @@ const EmployeeInfo = (props) => {
           </div>
           <div className='surname'>
             <p>გვარი</p>
-            <input value={EmpInfo.surname} type="text" onChange={(e) => {
+            <input id='surname' value={EmpInfo.surname} type="text" onChange={(e) => {
               setEmpInfo({
                 ...EmpInfo,
                 surname: e.target.value
@@ -109,7 +124,7 @@ const EmployeeInfo = (props) => {
                 }
               })
             }}>
-              {console.log(`{"name":"${EmpInfo.team.name}","id":"${EmpInfo.team.team_id}"}`)}
+              
                <option value={`{"name":"","id":"null"}`} selected disabled hidden>თიმი</option>
               {props.teams.map((team) => (
                 <option style={{width:"100%"}} value={`{"name":"${team.name}","id":"${team.id}"}`} key={team.id}>{team.name}</option>
@@ -135,7 +150,7 @@ const EmployeeInfo = (props) => {
         </div>
         <div className='mail'>
           <p>მეილი</p>
-          <input style={
+          <input id='mail' style={
             EmpInfo.mail == { border: "1px solid #8AC0E2"} || EmpInfo.mail == "" ? { border: "1px solid #8AC0E2"} :
               EmpInfo.mail.endsWith("@redberry.ge") ? { border: "1px solid #8AC0E2"} : { border: "1px solid red" }
           } value={EmpInfo.mail} type="mail" onChange={(e) => {
@@ -151,7 +166,7 @@ const EmployeeInfo = (props) => {
         </div>
         <div >
           <p className='number'>ნომერი</p>
-          <input  style={
+          <input id='number'  style={
             EmpInfo.mail == { border: "1px solid #8AC0E2"} || EmpInfo.mail == "" ? { border: "1px solid #8AC0E2"} :
               numberValidation() ? { border: "1px solid #8AC0E2"} : { border: "1px solid red" }
           } className='ninput' value={EmpInfo.number} type="text" onChange={(e) => {
@@ -166,7 +181,7 @@ const EmployeeInfo = (props) => {
           } className='pholder'>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</p>
         </div>
         <div className='nextcont'>
-        <input className='next' onClick={()=>handleClick()} type="button" value="შემდეგი"/>
+        <input className='next' onClick={()=>handleClick()? navigate("/attributes/laptopinfo"): null} type="button" value="შემდეგი"/>
         </div>
       </form>
     </div>
