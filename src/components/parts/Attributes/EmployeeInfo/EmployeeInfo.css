@@ -1,5 +1,5 @@
 .empinfo {
-    background: #fff;
+    background: #ffff;
     margin: 10px auto;
     display: flex;
     justify-content: center;
@@ -8,6 +8,7 @@
     border-radius: 30px;
 
 }
+
 input{
     padding-left: .5rem;
 }
@@ -96,10 +97,9 @@ select{
     color: #fff;
     float: right;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 18px 60px;
     gap: 20px;
     width: 176px;
     height: 60px;

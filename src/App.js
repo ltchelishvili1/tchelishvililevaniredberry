@@ -16,6 +16,8 @@ import LaptopInfo from './components/parts/Attributes/LaptopInfo/LaptopInfo';
 function App() {
   const [teams,setTeams]= useState([])
   const [positions,setPositions] = useState([])
+  const [brands,setBrands]= useState([])
+  const [cpus,setCpus] = useState([])
   useEffect(() => {
     fetch("https://pcfy.redberryinternship.ge/api/teams")
       .then((response) => response.json())
@@ -28,13 +30,28 @@ function App() {
       .then((data) => setPositions(data.data));
 
   }, [])
+  useEffect(() => {
+    fetch("https://pcfy.redberryinternship.ge/api/brands")
+      .then((response) => response.json())
+      .then((data) => setBrands(data.data));
+
+  }, [])
+  useEffect(() => {
+    fetch("https://pcfy.redberryinternship.ge/api/cpus")
+      .then((response) => response.json())
+      .then((data) => setCpus(data.data));
+
+  }, [])
+
+  
+  
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Header />} />
         <Route path="attributes" element={<Attributes />}>
           <Route path="employeeinfo" element={<EmployeeInfo teams={teams} positions={positions}/>} />
-          <Route path="laptopinfo" element={<LaptopInfo/>} />
+          <Route path="laptopinfo" element={<LaptopInfo brands={brands} cpus={cpus}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
