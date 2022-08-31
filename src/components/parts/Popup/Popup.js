@@ -14,7 +14,7 @@ function Popup(props) {
                <div className='poppupbot'>
                <p className='added'>ჩანაწერი დამატებულია</p>
               <div className='inputcont'>
-              <input type="button" value="სიაში გადაყვანა"/>
+              <input type="button" value="სიაში გადაყვანა" onClick={()=> navigate("/laptoplist")}/>
               
               </div>
                 <p onClick={()=>navigate("/")} className='poppupmain'>მთავარი</p>

@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import frame from '../../assets/Frame.png'
 import logo from '../../assets/LOGO-02 1.png'
 import './Header.css'
 const Header = () => {
+    const navigate=useNavigate()
     return (
         <div className='main' style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4rem" }}>
             <img src={logo} className="main-page-logo" alt="logo" />
@@ -16,7 +17,7 @@ const Header = () => {
 
                 </div>
                 <div className='btndown'>
-                    <input type="button" value="ჩანაწერების სია" />
+                    <input type="button" value="ჩანაწერების სია" onClick={()=>navigate('/laptoplist')} />
                 </div>
             </form>
         </div>
