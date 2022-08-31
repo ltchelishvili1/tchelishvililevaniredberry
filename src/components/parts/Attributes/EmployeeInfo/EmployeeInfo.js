@@ -31,7 +31,7 @@ const EmployeeInfo = (props) => {
     else if ((name.length < 2)) {
       return true + 'length'
     }
-    else if (!/^[ქაზწსხედცრფვტგბყჰნუჯმიკოლპშჭჩღთჟ]+$/g.test(name)) {
+    else if (!/^[ქაზწსხედცრფვტგბყჰნუჯმიკოლპშჭჩღთძჟ]+$/g.test(name)) {
       return true + "language"
     } else {
       return false

@@ -141,26 +141,6 @@ const LaptopInfo = (props) => {
       }
     }
 
-    /*
-  name: empinfo.name,
-        surname: empinfo.surname,
-        team_id: JSON.parse(empinfo.team.team_id),
-        position_id: JSON.parse(empinfo.position.id),
-        phone_number: empinfo.number,
-        email: empinfo.mail,
-        token: "dafd08af7925996e4cf295697ac6ca24",
-        laptop_name: laptopInfo.laptopnName,
-        laptop_image: laptopInfo.img,
-        laptop_brand_id: JSON.parse(laptopInfo.laptopBrand.id),
-        laptop_cpu: laptopInfo.CPU,
-        laptop_cpu_cores: JSON.parse(laptopInfo.CPUcore),
-        laptop_cpu_thrads: JSON.parse(laptopInfo.CPUgen),
-        laptop_ram: JSON.parse(laptopInfo.ram),
-        laptop_hard_drive_type: laptopInfo.memoryType,
-        laptop_state: laptopInfo.laptopCond,
-        laptop_purchase_date: laptopInfo.purchaseDate ? laptopInfo.purchaseDate : "",
-        laptop_price: JSON.parse(laptopInfo.laptopPrice)
-    */
 
     if (localStorage.getItem("validated") == "true" && count >= properties.length - 1 && attsCheck == properties.length - 2) {
 
@@ -189,7 +169,7 @@ const LaptopInfo = (props) => {
         laptop_price: JSON.parse(laptopInfo.laptopPrice)
       }
       setTrigger(true)
-    /*
+    
  axios
         .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
           headers: {
@@ -204,7 +184,7 @@ const LaptopInfo = (props) => {
         });
 
 
-    */
+    
 
     }
 
