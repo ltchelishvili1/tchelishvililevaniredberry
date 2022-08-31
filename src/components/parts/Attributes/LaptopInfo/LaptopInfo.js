@@ -6,7 +6,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import lari from '../../../assets/Vector.png'
 import error from '../../../assets/error.png'
+import Popup from '../../Popup/Popup';
 const LaptopInfo = (props) => {
+  const [trigger,setTrigger]= useState(false)
   const [result, setResult] = useState(null)
   const [empinfo, setEmpInfo] = useState(JSON.parse(localStorage.getItem("EmpInfo")) || {})
   const [laptopInfo, setlaptopInfo] = useState(JSON.parse(localStorage.getItem("LaptInfo")) || {
@@ -186,8 +188,7 @@ const LaptopInfo = (props) => {
         laptop_purchase_date: laptopInfo.purchaseDate ? laptopInfo.purchaseDate : "",
         laptop_price: JSON.parse(laptopInfo.laptopPrice)
       }
-
-      alert("success")
+      setTrigger(true)
     /*
  axios
         .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
@@ -427,6 +428,9 @@ const LaptopInfo = (props) => {
           </div>
         </div>
         <div className='verybottom'>
+          <Popup trigger={trigger}/>
+          
+  
           <div>
             <p>უკან</p>
           </div>
