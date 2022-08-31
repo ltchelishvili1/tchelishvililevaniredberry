@@ -12,7 +12,10 @@ const EmployeeInfo = (props) => {
     },
     mail: "",
     number: "",
-    position: ""
+    position: {
+      name: "",
+      id: ""
+    }
 
   })
   function numberValidation() {
@@ -56,7 +59,7 @@ const EmployeeInfo = (props) => {
     if(!ValidateName(EmpInfo.name)
     &&!ValidateName(EmpInfo.surname)
     &&numberValidation()&&EmpInfo.mail.endsWith("@redberry.ge")
-    &&EmpInfo.position!==null&&EmpInfo.name!==""&&EmpInfo.surname!==""){
+    &&EmpInfo.position.name!==null&&EmpInfo.name!==""&&EmpInfo.surname!==""){
       return true
    
     } 
@@ -132,17 +135,21 @@ const EmployeeInfo = (props) => {
             </select>
           </div>
           <div className='position'>
-            <select value={EmpInfo.position} onChange={(e) => {
+          <select   value={`{"name":"${EmpInfo.position.name}","id":"${EmpInfo.position.id}"}`} onChange={(e) => {
               setEmpInfo({
                 ...EmpInfo,
-                position: e.target.value
+                position: {
+                  name: JSON.parse(e.target.value).name,
+                  id: JSON.parse(e.target.value).id
+                }
               })
             }}>
-              <option value="none" selected disabled hidden>პოზიცია</option>
+              
+               <option value={`{"name":"","id":"null"}`} selected disabled hidden>პოზიცია</option>
               {props.positions.filter((position) =>
                 (position.team_id == EmpInfo.team.team_id)
               ).map((filteredPosition) => (
-                <option value={filteredPosition.name} >{filteredPosition.name}</option>
+                <option style={{width:"100%"}} value={`{"name":"${filteredPosition.name}","id":"${filteredPosition.id}"}`} key={filteredPosition.id}>{filteredPosition.name}</option>
               ))}
             </select>
 

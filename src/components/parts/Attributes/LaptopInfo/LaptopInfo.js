@@ -1,15 +1,20 @@
+
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import './LaptopInfo.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import lari from '../../../assets/Vector.png'
 import error from '../../../assets/error.png'
 const LaptopInfo = (props) => {
-
-  
+  const [result, setResult] = useState(null)
+  const [empinfo, setEmpInfo] = useState(JSON.parse(localStorage.getItem("EmpInfo")) || {})
   const [laptopInfo, setlaptopInfo] = useState(JSON.parse(localStorage.getItem("LaptInfo")) || {
     laptopnName: '',
-    laptopBrand: '',
+    laptopBrand: {
+      name: "",
+      id: ""
+    },
     CPU: '',
     CPUcore: '',
     CPUgen: '',
@@ -27,101 +32,183 @@ const LaptopInfo = (props) => {
   if (laptopInfo.purchaseDate == "" || laptopInfo.purchaseDate == null) {
     toDay = new Date().toISOString().substring(0, 10);
   }
+
   function handleFile(e) {
+    setResult(e.target.files[0])
     setlaptopInfo({
       ...laptopInfo,
       img: URL.createObjectURL(e.target.files[0])
     });
 
+  
+  
+    //  laptop_image: "@298301037_719494889152700_5935850068211458756_n.png;type=image/png",
 
   }
+  /*
+  
+      e.target.files[0].arrayBuffer().then((arrayBuffer) => {
+        const blob = new Blob([new Uint8Array( e.target.files[0])], { type: e.target.files[0].type });
+          console.log(blob)
+        const reader = new FileReader()
+        reader.readAsBinaryString(blob);
+        console.log(reader)
+      });
+  
+  
+  */
 
-  function handleSubmit(){
-    let attsCheck=0;
-      if(laptopInfo.img==""|| laptopInfo.img==null || laptopInfo.img==undefined ){
-        document.getElementById("image").style.border = "2px dashed red"
-        document.getElementById("imgname").style.color = "red"
-        document.getElementById("imgname1").style.color = "red"
-        document.getElementById("errorimg").style.display = "block"
-        setlaptopInfo({
-          ...laptopInfo,
-          check: false
+
+  function handleSubmit() {
+    let attsCheck = 0;
+    if (laptopInfo.img == "" || laptopInfo.img == null || laptopInfo.img == undefined) {
+      document.getElementById("image").style.border = "2px dashed red"
+      document.getElementById("imgname").style.color = "red"
+      document.getElementById("imgname1").style.color = "red"
+      document.getElementById("errorimg").style.display = "block"
+      setlaptopInfo({
+        ...laptopInfo,
+        check: false
+      })
+    } else {
+      attsCheck++
+      document.getElementById("image").style.border = "2px dashed #62A1EB"
+      document.getElementById("imgname").style.color = "#62A1EB"
+      document.getElementById("imgname1").style.color = "#62A1EB"
+      document.getElementById("errorimg").style.display = "none"
+    }
+    if (laptopInfo.laptopnName == "") {
+      document.getElementById("laptopname").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("laptopname").style.border = "1px solid #62A1EB"
+    }
+    if (laptopInfo.laptopBrand.name == "ლეპტოპის ბრენდი" || laptopInfo.laptopBrand.name == "") {
+      document.getElementById("laptopbrand").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("laptopbrand").style.border = "1px solid #62A1EB"
+    }
+    if (laptopInfo.CPU == "CPU" || laptopInfo.CPU == "") {
+      document.getElementById("laptopcpu").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("laptopcpu").style.border = "1px solid #62A1EB"
+    }
+    if (laptopInfo.CPUcore == "") {
+      document.getElementById("cpucore").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("cpucore").style.border = "1px solid #62A1EB"
+    }
+    if (laptopInfo.CPUgen == "") {
+      document.getElementById("cpugen").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("cpugen").style.border = "1px solid #62A1EB"
+    }
+    if (laptopInfo.ram == "") {
+      document.getElementById("ram").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("ram").style.border = "1px solid #62A1EB"
+    }
+    if (laptopInfo.memoryType == "") {
+      document.getElementById("memorytype").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("memorytype").style.border = "none"
+    }
+    if (laptopInfo.laptopPrice == "") {
+      document.getElementById("laptopprice").style.border = "none"
+    } else {
+      attsCheck++
+      document.getElementById("laptopprice").style.border = "1px solid #62A1EB"
+    }
+    if (laptopInfo.laptopCond == "") {
+      document.getElementById("laptopcond").style.border = "1px solid red"
+    } else {
+      attsCheck++
+      document.getElementById("laptopcond").style.border = "none"
+    }
+    const properties = Object.getOwnPropertyNames(laptopInfo)
+    let count = 0;
+    for (let i = 0; i < properties.length; i++) {
+      if (!JSON.stringify(laptopInfo).includes(`"${properties[i]}"` + `:""`)) {
+        count++
+      }
+    }
+
+    /*
+  name: empinfo.name,
+        surname: empinfo.surname,
+        team_id: JSON.parse(empinfo.team.team_id),
+        position_id: JSON.parse(empinfo.position.id),
+        phone_number: empinfo.number,
+        email: empinfo.mail,
+        token: "dafd08af7925996e4cf295697ac6ca24",
+        laptop_name: laptopInfo.laptopnName,
+        laptop_image: laptopInfo.img,
+        laptop_brand_id: JSON.parse(laptopInfo.laptopBrand.id),
+        laptop_cpu: laptopInfo.CPU,
+        laptop_cpu_cores: JSON.parse(laptopInfo.CPUcore),
+        laptop_cpu_thrads: JSON.parse(laptopInfo.CPUgen),
+        laptop_ram: JSON.parse(laptopInfo.ram),
+        laptop_hard_drive_type: laptopInfo.memoryType,
+        laptop_state: laptopInfo.laptopCond,
+        laptop_purchase_date: laptopInfo.purchaseDate ? laptopInfo.purchaseDate : "",
+        laptop_price: JSON.parse(laptopInfo.laptopPrice)
+    */
+
+    if (localStorage.getItem("validated") == "true" && count >= properties.length - 1 && attsCheck == properties.length - 2) {
+
+
+
+      console.log(result)
+      var body = {
+
+        name: empinfo.name,
+        surname: empinfo.surname,
+        team_id: JSON.parse(empinfo.team.team_id),
+        position_id: JSON.parse(empinfo.position.id),
+        phone_number: empinfo.number,
+        email: empinfo.mail,
+        token: "008eb969a19e7990d2de16d66627150d",
+        laptop_name: laptopInfo.laptopnName.toUpperCase(),
+        laptop_image: result,
+        laptop_brand_id: JSON.parse(laptopInfo.laptopBrand.id),
+        laptop_cpu: laptopInfo.CPU,
+        laptop_cpu_cores: laptopInfo.CPUcore,
+        laptop_cpu_threads: laptopInfo.CPUgen,
+        laptop_ram: laptopInfo.ram,
+        laptop_hard_drive_type: laptopInfo.memoryType.toUpperCase(),
+        laptop_state: laptopInfo.laptopCond,
+        laptop_purchase_date: laptopInfo.purchaseDate ? laptopInfo.purchaseDate : "",
+        laptop_price: JSON.parse(laptopInfo.laptopPrice)
+      }
+
+      alert("success")
+    /*
+ axios
+        .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         })
-      }else{
-        attsCheck++
-        document.getElementById("image").style.border = "2px dashed #62A1EB"
-        document.getElementById("imgname").style.color = "#62A1EB"
-        document.getElementById("imgname1").style.color = "#62A1EB"
-        document.getElementById("errorimg").style.display = "none"
-      }
-      if(laptopInfo.laptopnName==""){
-        document.getElementById("laptopname").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("laptopname").style.border = "1px solid #62A1EB"
-      }
-      if(laptopInfo.laptopBrand=="ლეპტოპის ბრენდი"||laptopInfo.laptopBrand==""){
-        document.getElementById("laptopbrand").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("laptopbrand").style.border = "1px solid #62A1EB"
-      }
-      if(laptopInfo.CPU=="CPU"||laptopInfo.CPU==""){
-        document.getElementById("laptopcpu").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("laptopcpu").style.border = "1px solid #62A1EB"
-      }
-      if(laptopInfo.CPUcore==""){
-        document.getElementById("cpucore").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("cpucore").style.border = "1px solid #62A1EB"
-      }
-      if(laptopInfo.CPUgen==""){
-        document.getElementById("cpugen").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("cpugen").style.border = "1px solid #62A1EB"
-      }
-      if(laptopInfo.ram==""){
-        document.getElementById("ram").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("ram").style.border = "1px solid #62A1EB"
-      }
-      if(laptopInfo.memoryType==""){
-        document.getElementById("memorytype").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("memorytype").style.border = "none"
-      }
-      if(laptopInfo.laptopPrice==""){
-        document.getElementById("laptopprice").style.border = "none"
-      }else{
-        attsCheck++
-        document.getElementById("laptopprice").style.border = "1px solid #62A1EB"
-      }
-      if(laptopInfo.laptopCond==""){
-        document.getElementById("laptopcond").style.border = "1px solid red"
-      }else{
-        attsCheck++
-        document.getElementById("laptopcond").style.border = "none"
-      }
-      const properties=Object.getOwnPropertyNames(laptopInfo)
-      let count=0;
-      for(let i=0;i<properties.length;i++){
-        if(!JSON.stringify(laptopInfo).includes(`"${properties[i]}"`+`:""`)){
-              count++
-        }
-      }
-      console.log(attsCheck)
-      console.log(count)
-      if(localStorage.getItem("validated")=="true"&&count>=properties.length-1&&attsCheck==properties.length-2){
-        console.log("donedial")
-      }
-     
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+    */
+
+    }
+
   }
+
 
   useEffect(() => {
 
@@ -130,13 +217,13 @@ const LaptopInfo = (props) => {
   }, [laptopInfo]);
   return (
     <div className=' laptopinfo'>
-    
+
       <div className='container'>
         <div className='top'>
           <div id='image' className='uploadimage'>
             {laptopInfo.img && <img className='uploadedimage' alt='YOUR SELECTED PHOTO' src={laptopInfo.img ? laptopInfo.img : JSON.parse(localStorage.getItem("LaptInfo")).img} />}
             <div className='contents'>
-              <img id='errorimg' src={error} style={{display:"none"}} alt=""/>
+              <img id='errorimg' src={error} style={{ display: "none" }} alt="" />
               <p id='imgname'>ჩააგდე ან ატვირთე</p>
               <p id='imgname1' style={{ transform: "translateY(-70%)", paddingBottom: "1rem" }}>ლეპტოპის ფოტო</p>
 
@@ -162,19 +249,23 @@ const LaptopInfo = (props) => {
               </p>
             </div>
             <div className='laptopbrand'>
-              <select id='laptopbrand' value={laptopInfo.laptopBrand} style={{ height: "35px", transform: "translateY(30%)", fontWeight: "600" }} onChange={(e) => {
+              <select id='laptopbrand' value={`{"name":"${laptopInfo.laptopBrand.name}","id":"${laptopInfo.laptopBrand.id}"}`} style={{ height: "35px", transform: "translateY(30%)", fontWeight: "600" }} onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
-                  laptopBrand: e.target.value
+                  laptopBrand: {
+                    name: JSON.parse(e.target.value).name,
+                    id: JSON.parse(e.target.value).id
+                  }
                 })
               }} className='lbrandselect'>
                 <option >ლეპტოპის ბრენდი</option>
                 {
                   props.brands.map((brand) => (
-                    <option key={brand.id}>{brand.name}</option>
+                    <option value={`{"name":"${brand.name}","id":"${brand.id}"}`} key={brand.id}>{brand.name}</option>
                   ))
                 }
               </select>
+
             </div>
           </div>
           <hr
@@ -243,7 +334,7 @@ const LaptopInfo = (props) => {
                 <span>მხოლოდ ციფრები </span>
               </p>
             </div>
-            <div id='memorytype' style={{paddingLeft:".5rem"}} className='mid-bot-right'>
+            <div id='memorytype' style={{ paddingLeft: ".5rem" }} className='mid-bot-right'>
               <p className='lnamep'>მეხსიერების ტიპი</p>
               <div style={{ display: "flex" }} className='sddhdd'>
                 <div style={{ transform: "translateX(-12%)" }} className='ssd' onChange={(e) => {
@@ -310,7 +401,7 @@ const LaptopInfo = (props) => {
             </div>
           </div>
           <div className='bot-bot' style={{ padding: "3rem 0" }}>
-            <div id='laptopcond' style={{paddingLeft:".4rem"}} className='mid-bot-right'>
+            <div id='laptopcond' style={{ paddingLeft: ".4rem" }} className='mid-bot-right'>
               <p className='lnamep'>ლეპტოპის მდგომარეობა</p>
               <div style={{ display: "flex" }} className='sddhdd'>
                 <div style={{ transform: "translateX(-12%)" }} className='ssd' onChange={(e) => {
@@ -328,20 +419,20 @@ const LaptopInfo = (props) => {
                     laptopCond: e.target.value
                   })
                 }} >
-                  <input checked={laptopInfo.laptopCond == "old" ? "checked" : null} type="radio" className='inputradio' id="old" name="newold" value="old" />
-                  <label for="old" style={{ paddingLeft: ".7rem" }} >მეორადი</label>
+                  <input checked={laptopInfo.laptopCond == "used" ? "checked" : null} type="radio" className='inputradio' id="used" name="newold" value="used" />
+                  <label for="used" style={{ paddingLeft: ".7rem" }} >მეორადი</label>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className='verybottom'>
-              <div>
-                <p>უკან</p>
-              </div>
-              <div className='submitbutton'>
-              <input className='submit'  type="button" value="შემდეგი" onClick={()=> handleSubmit()}/>
-              </div>
+          <div>
+            <p>უკან</p>
+          </div>
+          <div className='submitbutton'>
+            <input className='submit' type="button" value="შემდეგი" onClick={() => handleSubmit()} />
+          </div>
         </div>
       </div>
     </div>
