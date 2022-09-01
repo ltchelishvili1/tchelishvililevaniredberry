@@ -13,6 +13,7 @@ import Attributes from './components/parts/Attributes/Attributes';
 import EmployeeInfo from './components/parts/Attributes/EmployeeInfo/EmployeeInfo'
 import LaptopInfo from './components/parts/Attributes/LaptopInfo/LaptopInfo';
 import Laptoplist from './components/parts/Laptoplist/Laptoplist';
+import Listitem from './components/parts/Listitem/Listitem';
 const TOKEN ="008eb969a19e7990d2de16d66627150d"
 function App() {
   const [teams, setTeams] = useState([])
@@ -57,12 +58,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {console.log(laptops)}
         <Route path='/' element={<Header />} />
         <Route path="attributes" element={<Attributes />}>
           <Route path="employeeinfo" element={<EmployeeInfo teams={teams} positions={positions} />} />
           <Route path="laptopinfo" element={<LaptopInfo brands={brands} cpus={cpus} />} />
         </Route>
         <Route path='/laptoplist' element={<Laptoplist laptops={laptops} />} />
+        {laptops.map((laptop)=>(
+          <Route path={`/laptoplist/laptopid=${laptop.laptop.id}`} element={<Listitem TOKEN={TOKEN} id={laptop.laptop.id}/>}/>
+        ))}
       </Routes>
     </BrowserRouter>
   );

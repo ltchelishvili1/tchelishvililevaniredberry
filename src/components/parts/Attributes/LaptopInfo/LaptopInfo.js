@@ -8,6 +8,7 @@ import lari from '../../../assets/Vector.png'
 import error from '../../../assets/error.png'
 import Popup from '../../Popup/Popup';
 const LaptopInfo = (props) => {
+  const [error,setError]= useState(false)
   const [trigger, setTrigger] = useState(false)
   const [result, setResult] = useState(null)
   const [empinfo, setEmpInfo] = useState(JSON.parse(localStorage.getItem("EmpInfo")) || {})
@@ -48,7 +49,7 @@ const LaptopInfo = (props) => {
 
   function handleSubmit() {
     let attsCheck = 0;
-    if (laptopInfo.img == "" || laptopInfo.img == null || laptopInfo.img == undefined) {
+    if (laptopInfo.img == "" || laptopInfo.img == null || laptopInfo.img == undefined || result==''||result==null||result==undefined) {
       document.getElementById("image").style.border = "2px dashed red"
       document.getElementById("imgname").style.color = "red"
       document.getElementById("imgname1").style.color = "red"
@@ -149,32 +150,28 @@ const LaptopInfo = (props) => {
         laptop_purchase_date: laptopInfo.purchaseDate ? laptopInfo.purchaseDate : "",
         laptop_price: JSON.parse(laptopInfo.laptopPrice)
       }
-      setTrigger(true)
-
+  /*    
       axios
-        .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-
-
-
+           .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
+             headers: {
+               "Content-Type": "multipart/form-data",
+             },
+           })
+           .then((res) => {
+             console.log(res);
+           })
+           .catch((err) => {
+             console.log(err)
+           });
+*/
+        setTrigger(true)
+        setError(false)
+    }else{
+      setError(true)
     }
 
   }
-
-
   useEffect(() => {
-
-
     localStorage.setItem('LaptInfo', JSON.stringify(laptopInfo));
   }, [laptopInfo]);
   return (
@@ -183,7 +180,7 @@ const LaptopInfo = (props) => {
       <div className='container'>
         <div className='top'>
           <div id='image' className='uploadimage'>
-            {laptopInfo.img && <img className='uploadedimage' alt='YOUR SELECTED PHOTO' src={laptopInfo.img ? laptopInfo.img : JSON.parse(localStorage.getItem("LaptInfo")).img} />}
+            {result && <img className='uploadedimage' alt='YOUR SELECTED PHOTO' src={laptopInfo.img} />}
             <div className='contents'>
               <img id='errorimg' src={error} style={{ display: "none" }} alt="" />
               <p id='imgname'>ჩააგდე ან ატვირთე</p>
@@ -389,7 +386,7 @@ const LaptopInfo = (props) => {
           </div>
         </div>
         <div className='verybottom'>
-          <Popup trigger={trigger} />
+          <Popup trigger={trigger} error="success" />
 
 
           <div>
@@ -397,6 +394,7 @@ const LaptopInfo = (props) => {
           </div>
           <div className='submitbutton'>
             <input className='submit' type="button" value="შემდეგი" onClick={() => handleSubmit()} />
+           {error?  <p style={{fontSize:".8rem",color:"red",padding:"2rem 0 0 .7rem"}}>გადაამოწმე მონაცემები</p>  : null}
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Laptoplist.css'
 const Laptoplist = (props) => {
     return (
@@ -16,7 +17,7 @@ const Laptoplist = (props) => {
                             <div className='rightcntent'>
                                 <p className='username'>{x.user.name}{" "} {x.user.surname}</p>
                                 <p className='laptopname'>{x.laptop.name}</p>
-                                <p className='more'>მეტის ნახვა</p>
+                              <Link style={{textDecoration:"none"}} to={`laptopid=${x.laptop.id}`}>  <p className='more'>მეტის ნახვა</p></Link>
                             </div>
                         </div>
                     ))}
