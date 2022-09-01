@@ -8,7 +8,7 @@ import lari from '../../../assets/Vector.png'
 import error from '../../../assets/error.png'
 import Popup from '../../Popup/Popup';
 const LaptopInfo = (props) => {
-  const [trigger,setTrigger]= useState(false)
+  const [trigger, setTrigger] = useState(false)
   const [result, setResult] = useState(null)
   const [empinfo, setEmpInfo] = useState(JSON.parse(localStorage.getItem("EmpInfo")) || {})
   const [laptopInfo, setlaptopInfo] = useState(JSON.parse(localStorage.getItem("LaptInfo")) || {
@@ -42,23 +42,8 @@ const LaptopInfo = (props) => {
       img: URL.createObjectURL(e.target.files[0])
     });
 
-  
-  
-    //  laptop_image: "@298301037_719494889152700_5935850068211458756_n.png;type=image/png",
-
   }
-  /*
-  
-      e.target.files[0].arrayBuffer().then((arrayBuffer) => {
-        const blob = new Blob([new Uint8Array( e.target.files[0])], { type: e.target.files[0].type });
-          console.log(blob)
-        const reader = new FileReader()
-        reader.readAsBinaryString(blob);
-        console.log(reader)
-      });
-  
-  
-  */
+
 
 
   function handleSubmit() {
@@ -143,10 +128,6 @@ const LaptopInfo = (props) => {
 
 
     if (localStorage.getItem("validated") == "true" && count >= properties.length - 1 && attsCheck == properties.length - 2) {
-
-
-
-      console.log(result)
       var body = {
 
         name: empinfo.name,
@@ -169,8 +150,8 @@ const LaptopInfo = (props) => {
         laptop_price: JSON.parse(laptopInfo.laptopPrice)
       }
       setTrigger(true)
-    
- axios
+
+      axios
         .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -184,7 +165,7 @@ const LaptopInfo = (props) => {
         });
 
 
-    
+
 
     }
 
@@ -408,9 +389,9 @@ const LaptopInfo = (props) => {
           </div>
         </div>
         <div className='verybottom'>
-          <Popup trigger={trigger}/>
-          
-  
+          <Popup trigger={trigger} />
+
+
           <div>
             <p>უკან</p>
           </div>
