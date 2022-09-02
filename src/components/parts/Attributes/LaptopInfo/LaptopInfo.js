@@ -42,6 +42,10 @@ const LaptopInfo = (props) => {
       ...laptopInfo,
       img: URL.createObjectURL(e.target.files[0])
     });
+    document.getElementById("image").style.border = "2px dashed #62A1EB"
+    document.getElementById("imgname").style.color = "#62A1EB"
+    document.getElementById("imgname1").style.color = "#62A1EB"
+    document.getElementById("errorimg").style.display = "none"
 
   }
 
