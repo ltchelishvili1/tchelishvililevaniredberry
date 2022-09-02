@@ -8,30 +8,16 @@
 .nav p {
     padding: 0 2rem;
     cursor: pointer;
-    font-family: Helvetica Neue;
+    font-family: georgian;
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
+    
 
 
 }
 
-.attrtxt:after {
-    content: '';
-    position: absolute;
-    width: 15%;
-    transform: scaleX(0);
-    height: 2px;
 
-    background-color: #5ECE7B;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.attrtxt:hover:after {
-
-    transform: scaleX(1);
-}
 
 .logoimage {
     padding: 4rem 0 2rem 0;
@@ -41,4 +27,19 @@
     left: calc(50% - 85px/2 - 0.5px);
    
 
+
+}
+#hrr1{
+    color: black;
+    background-color: black;
+    height: 2px;
+    border: none;
+    width: 70%;
+}
+#hrr2{
+    color: black;
+    background-color: black;
+    height: 2px;
+    border: none;
+    width: 70%;
 }

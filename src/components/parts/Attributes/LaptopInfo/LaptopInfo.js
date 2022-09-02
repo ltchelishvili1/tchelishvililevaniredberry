@@ -176,6 +176,7 @@ const LaptopInfo = (props) => {
   }, [laptopInfo]);
   return (
     <div className=' laptopinfo'>
+      {console.log(result)}
       <div className='container'>
         <div className='top'>
           <div id='image' className='uploadimage'>
