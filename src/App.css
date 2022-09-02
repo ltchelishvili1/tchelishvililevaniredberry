@@ -3,7 +3,7 @@
   src: url(./components//assets/font/HelveticaNeue.ttc);
 }
 body{
-  background: rgba(108, 108, 108, 0.294);
+  background: #ffff;
 }
 .App {
   text-align: center;

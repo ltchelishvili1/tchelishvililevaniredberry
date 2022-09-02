@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Laptoplist.css'
 const Laptoplist = (props) => {
+
     return (
         <div className='laptoplist'>
             <p className='notelistname'>ჩანაწერების სია</p>
@@ -10,9 +11,7 @@ const Laptoplist = (props) => {
                 <div className='notelist'>
                     {props.laptops.map((x) => (
                         <div className='laptopcont' key={x.laptop.id}>
-                            {
-                                console.log(x.laptop.image)
-                            }
+                          
                             <img src={"https://pcfy.redberryinternship.ge/" + x.laptop.image} alt="img" />
                             <div className='rightcntent'>
                                 <p className='username'>{x.user.name}{" "} {x.user.surname}</p>
