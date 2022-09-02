@@ -13,4 +13,26 @@
 .contt{
     display: flex;
     justify-content: space-between;
+    padding-bottom: 2rem;
+}
+.itemtopleft{
+    width: 50%;
+    
+}
+.itemtopright{
+    
+    width: 45%;
+}
+.itemtopleft img{
+    border-radius: 8px;
+    width: 100%;
+    height: 350px;
+    
+    
+}
+.item span{
+    opacity: 0.6;
+}
+.item p{
+    font-weight: 500;
 }

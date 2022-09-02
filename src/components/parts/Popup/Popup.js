@@ -1,7 +1,7 @@
 import React from 'react'
 import './Popup.css'
 import succFram from '../../assets/succFrame.png'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 function Popup(props) {
     const navigate = useNavigate()
     return (props.trigger) ? (
@@ -10,13 +10,13 @@ function Popup(props) {
                 <div className='imgcont'>
                     <img src={succFram} alt="succFrame" />
                 </div>
-                <div className='poppupbot'>
+                <div >
                     <p className='added'>ჩანაწერი დამატებულია</p>
                     <div className='inputcont'>
-                        <input type="button" value="სიაში გადაყვანა" onClick={() => navigate("/laptoplist")} />
+                    <a  style={{textDecoration:"none",color:"fff",width:"100%"}}  href='/laptoplist'><p className='listmove'>სიაში გადაყვანა</p></a>
 
                     </div>
-                    <p onClick={() => navigate("/")} className='poppupmain'>მთავარი</p>
+                    <a  style={{textDecoration:"none",width:"100%",color:"#62A1EB"}} className="mainp"  href='/laptoplist'>მთავარი</a>
                 </div>
             </div>
         </div>) : "";

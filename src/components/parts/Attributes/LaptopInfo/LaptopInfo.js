@@ -150,7 +150,7 @@ const LaptopInfo = (props) => {
         laptop_purchase_date: laptopInfo.purchaseDate ? laptopInfo.purchaseDate : "",
         laptop_price: JSON.parse(laptopInfo.laptopPrice)
       }
-  /*    
+     
       axios
            .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
              headers: {
@@ -163,7 +163,7 @@ const LaptopInfo = (props) => {
            .catch((err) => {
              console.log(err)
            });
-*/
+
         setTrigger(true)
         setError(false)
     }else{
@@ -176,7 +176,6 @@ const LaptopInfo = (props) => {
   }, [laptopInfo]);
   return (
     <div className=' laptopinfo'>
-
       <div className='container'>
         <div className='top'>
           <div id='image' className='uploadimage'>

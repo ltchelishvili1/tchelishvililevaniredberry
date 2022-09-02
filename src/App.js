@@ -17,7 +17,7 @@ import Listitem from './components/parts/Listitem/Listitem';
 import axios from 'axios';
 const TOKEN = "008eb969a19e7990d2de16d66627150d"
 function App() {
-  const [it, fetchId] = useState('')
+  const [upd, forceUpd] = useState(0)
   const [teams, setTeams] = useState([])
   const [positions, setPositions] = useState([])
   const [brands, setBrands] = useState([])
@@ -63,9 +63,9 @@ function App() {
         <Route path='/' element={<Header />} />
         <Route path="attributes" element={<Attributes />}>
           <Route path="employeeinfo" element={<EmployeeInfo teams={teams} positions={positions} />} />
-          <Route path="laptopinfo" element={<LaptopInfo brands={brands} cpus={cpus} />} />
+          <Route path="laptopinfo" element={<LaptopInfo  brands={brands} cpus={cpus} />} />
         </Route>
-        <Route path='/laptoplist' element={<Laptoplist laptops={laptops} />} />
+        <Route path='/laptoplist' element={<Laptoplist  laptops={laptops} />} />
         {laptops.map((laptop) => (
           <Route path={`/laptoplist/laptopid=${laptop.laptop.id}`} element={<Listitem positions={positions} brands={brands} teams={teams} TOKEN={TOKEN}  id={laptop.laptop.id}
           />} />
