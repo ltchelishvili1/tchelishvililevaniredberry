@@ -7,8 +7,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import lari from '../../../assets/Vector.png'
 import error from '../../../assets/error.png'
 import Popup from '../../Popup/Popup';
+import succ from '../../../assets/imguploaded.png'
 const LaptopInfo = (props) => {
-  const [error,setError]= useState(false)
+  const [error, setError] = useState(false)
   const [trigger, setTrigger] = useState(false)
   const [result, setResult] = useState(null)
   const [empinfo, setEmpInfo] = useState(JSON.parse(localStorage.getItem("EmpInfo")) || {})
@@ -42,10 +43,14 @@ const LaptopInfo = (props) => {
       ...laptopInfo,
       img: URL.createObjectURL(e.target.files[0])
     });
-    document.getElementById("image").style.border = "2px dashed #62A1EB"
-    document.getElementById("imgname").style.color = "#62A1EB"
-    document.getElementById("imgname1").style.color = "#62A1EB"
+    document.getElementById("imgname").style.display = "none"
+    document.getElementById("imgname1").style.display = "none"
     document.getElementById("errorimg").style.display = "none"
+    document.getElementById("image").style.border = "none"
+    document.getElementById("uplbtn").style.display = "none"
+
+
+
 
   }
 
@@ -53,7 +58,7 @@ const LaptopInfo = (props) => {
 
   function handleSubmit() {
     let attsCheck = 0;
-    if (laptopInfo.img == "" || laptopInfo.img == null || laptopInfo.img == undefined || result==''||result==null||result==undefined) {
+    if (laptopInfo.img == "" || laptopInfo.img == null || laptopInfo.img == undefined || result == '' || result == null || result == undefined) {
       document.getElementById("image").style.border = "2px dashed red"
       document.getElementById("imgname").style.color = "red"
       document.getElementById("imgname1").style.color = "red"
@@ -154,27 +159,28 @@ const LaptopInfo = (props) => {
         laptop_purchase_date: laptopInfo.purchaseDate ? laptopInfo.purchaseDate : "",
         laptop_price: JSON.parse(laptopInfo.laptopPrice)
       }
-     
-      axios
-           .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
-             headers: {
-               "Content-Type": "multipart/form-data",
-             },
-           })
-           .then((res) => {
-             console.log(res);
-           })
-           .catch((err) => {
-             console.log(err)
-           });
 
-        setTrigger(true)
-        setError(false)
-    }else{
+      axios
+        .post("https://pcfy.redberryinternship.ge/api/laptop/create", body, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+
+      setTrigger(true)
+      setError(false)
+    } else {
       setError(true)
     }
 
   }
+  const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
   useEffect(() => {
     localStorage.setItem('LaptInfo', JSON.stringify(laptopInfo));
   }, [laptopInfo]);
@@ -185,19 +191,32 @@ const LaptopInfo = (props) => {
         <div className='top'>
           <div id='image' className='uploadimage'>
             {result && <img className='uploadedimage' alt='YOUR SELECTED PHOTO' src={laptopInfo.img} />}
-            <div className='contents'>
+            <div id='success' className='contents'>
               <img id='errorimg' src={error} style={{ display: "none" }} alt="" />
               <p id='imgname'>ჩააგდე ან ატვირთე</p>
               <p id='imgname1' style={{ transform: "translateY(-70%)", paddingBottom: "1rem" }}>ლეპტოპის ფოტო</p>
-
-
-
-              <input type="file" id='file' style={{ display: "none" }} name="file" onChange={(e) => handleFile(e)} multiple />
-              <label className='labelbtn' for="file">ატვირთე</label>
-
-
+              <div id="uplbtn" style={{width:"100%",transform:"translateX(-10%)"}}>
+                <input type="file" id='file' style={{ display: "none" }} name="file" onChange={(e) => handleFile(e)} multiple />
+                <label className='labelbtn' for="file">ატვირთე</label>
+              </div>
             </div>
+            {result ?
+              <div className='imgupload' style={{ width: "100%" }} >
+                <div className='imgcontsucc'>
+                  <img src={succ} alt="succ" />
+                  <div className='sizename'>
+                    <p style={{ color: "black" }}>{result.name},</p>
+                    <p style={{ color: "black", opacity: "0.5", transform: "translateX(-30%)" }}>{Math.round(bytesToMegaBytes(result.size) * 100) / 100} mb</p>
+                  </div>
+                </div>
+                <div style={{ transform: "translateX(-43%)" }}>
+                  <input type="file" id='file' style={{ display: "none" }} name="file" onChange={(e) => handleFile(e)} multiple />
+                  <label className='labelbtn' for="file">თავიდან ატვირთე</label>
+
+                </div>
+              </div> : null}
           </div>
+
           <div className='laptopnameandbrand'>
             <div className='laptopname'>
               <p className='lnamep'>ლეპტოპის სახელი</p>
@@ -212,7 +231,7 @@ const LaptopInfo = (props) => {
               </p>
             </div>
             <div className='laptopbrand'>
-              <select id='laptopbrand' value={`{"name":"${laptopInfo.laptopBrand.name}","id":"${laptopInfo.laptopBrand.id}"}`} style={{ height: "35px", transform: "translateY(30%)", fontWeight: "600" }} onChange={(e) => {
+              <select id='laptopbrand' value={`{"name":"${laptopInfo.laptopBrand.name}","id":"${laptopInfo.laptopBrand.id}"}`} style={{ height: "35px", transform: "translateY(55%)", fontWeight: "600" }} onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
                   laptopBrand: {
@@ -242,8 +261,8 @@ const LaptopInfo = (props) => {
         </div>
         <div className='mid-part'>
           <div className='mid-top'>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingRight: "2rem", float: "left" }} className='laptopbrand'>
-              <select id='laptopcpu' value={laptopInfo.CPU} style={{ height: "35px", fontWeight: "600", transform: "translateY(40%)" }} className='lbrandselect' onChange={(e) => {
+            <div className='laptopbrand'>
+              <select id='laptopcpu' value={laptopInfo.CPU} style={{ height: "35px", fontWeight: "600", transform: "translateY(176%)" }} className='lbrandselect' onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
                   CPU: e.target.value
@@ -287,7 +306,7 @@ const LaptopInfo = (props) => {
           <div className='mid-mid'>
             <div className='laptopname lnamm' >
               <p className='lnamep'>ლეპტოპის RAM(GB)</p>
-              <input id='ram' value={laptopInfo.ram} style={{ border: "1px solid #8AC0E2", width: "85%" }} type="number" onChange={(e) => {
+              <input id='ram' value={laptopInfo.ram} style={{ border: "1px solid #8AC0E2" }} type="number" onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
                   ram: e.target.value
@@ -334,9 +353,9 @@ const LaptopInfo = (props) => {
         <div className='bot-part'>
           <div className='bot-top'>
             <div className='bot-top-top'>
-              <div className='laptopname' style={{ width: "50%" }}>
+              <div className='laptopname mbile' >
                 <p className='lnamep'>შეძენის რივცხვი(არჩევითი)</p>
-                <input id="date" style={{ border: "1px solid #8AC0E2", width: "85%", paddingBottom: ".2rem" }} defaultValue={toDay} type="date" onChange={(e) => {
+                <input id="date" style={{ border: "1px solid #8AC0E2", paddingBottom: ".2rem" }} defaultValue={toDay} type="date" onChange={(e) => {
                   setlaptopInfo({
                     ...laptopInfo,
                     purchaseDate: e.target.value
@@ -345,9 +364,9 @@ const LaptopInfo = (props) => {
 
 
               </div>
-              <div className='laptopname' style={{ width: "50%" }}>
+              <div className='laptopname mbile' >
                 <p className='lnamep'>ლეპტოპის ფასი</p>
-                <input id='laptopprice' value={laptopInfo.laptopPrice} style={{ border: "1px solid #8AC0E2", width: "85%" }} type="number" onChange={(e) => {
+                <input id='laptopprice' value={laptopInfo.laptopPrice} style={{ border: "1px solid #8AC0E2" }} type="number" onChange={(e) => {
                   setlaptopInfo({
                     ...laptopInfo,
                     laptopPrice: e.target.value
@@ -364,7 +383,7 @@ const LaptopInfo = (props) => {
             </div>
           </div>
           <div className='bot-bot' style={{ padding: "3rem 0" }}>
-            <div id='laptopcond' style={{ paddingLeft: ".4rem" }} className='mid-bot-right'>
+            <div id='laptopcond' style={{ paddingLeft: ".4rem" }} className='midbbr mid-bot-right'>
               <p className='lnamep'>ლეპტოპის მდგომარეობა</p>
               <div style={{ display: "flex" }} className='sddhdd'>
                 <div style={{ transform: "translateX(-12%)" }} className='ssd' onChange={(e) => {
@@ -398,7 +417,7 @@ const LaptopInfo = (props) => {
           </div>
           <div className='submitbutton'>
             <input className='submit' type="button" value="შემდეგი" onClick={() => handleSubmit()} />
-           {error?  <p style={{fontSize:".8rem",color:"red",padding:"2rem 0 0 .7rem"}}>გადაამოწმე მონაცემები</p>  : null}
+            {error ? <p style={{ fontSize: ".8rem", color: "red", padding: "2rem 0 0 .7rem" }}>გადაამოწმე მონაცემები</p> : null}
           </div>
         </div>
       </div>

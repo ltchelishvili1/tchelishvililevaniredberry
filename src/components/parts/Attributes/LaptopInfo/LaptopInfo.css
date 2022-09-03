@@ -1,15 +1,46 @@
 .laptopinfo {
   background: #ffff;
-  margin: 10px auto;
-  display: flex;
-  justify-content: center;
-  max-width: 1026px;
-  zoom: 1.3;
+  margin: auto;
+  zoom: 1.4;
+  max-width: 726px;
   border-radius: 30px;
 }
 
-.container {
-  zoom: 1.3;
+select {
+  background: #EBEBEB;
+  border: none;
+  border-radius: 8px;
+
+}
+
+.imgupload {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.imgupload img {
+  height: 22px;
+  width: 22px;
+  border-radius: 0px;
+}
+
+.imgcontsucc{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.sizename{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.imgcontsucc p{
+  padding-left: 3rem;
 }
 
 .uploadimage {
@@ -17,14 +48,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: 370px;
   background-color: #F6F6F6;
   margin: 0 auto;
   border: 2px dashed #4386A9;
   border-radius: 18px;
+  background: transparent;
 
 }
 
+.lbrandselect {
+  width: 90%;
+
+}
 
 .uploadimage p {
   font-size: 17px;
@@ -50,6 +86,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  padding-top: 5rem;
 
 }
 
@@ -74,6 +111,10 @@
 
 .laptopname {
   width: 100%;
+}
+
+.sddhdd {
+  transform: translateY(100%);
 }
 
 .laptopname input {
@@ -112,11 +153,11 @@
   display: flex;
 }
 
-.mid-bot-right {}
-
-input[type=radio] {
-  background: pink;
+.midbbr {
+  transform: translateY(-70%);
 }
+
+
 
 .bot-top-top {
   display: flex;
@@ -160,15 +201,23 @@ input[type="date"]::-webkit-datetime-edit-day-field {
 
 }
 
-input[type='radio']::after {
+
+input[type='radio']:after {
   content: "";
-  height: 10px;
-  width: 10px;
+  height: 8px;
+  width: 8px;
   background: transparent;
   border-radius: 50%;
-  border: 1.6px solid #4386A9;
+  transform: translate(-4%, 2%);
+  border: 2.6px solid #4386A9;
   display: inline-block;
+  position: relative;
+  background-color: transparent;
+  content: '';
+  display: inline-block;
+
 }
+
 
 .uploadedimage {
   width: 100%;
@@ -213,42 +262,101 @@ input[type='radio']::after {
   border: none;
 }
 
-.verybottom{
+.verybottom {
   display: flex;
   justify-content: space-between;
- 
+
 }
 
 .submitbutton input {
   border-radius: 8px;
 }
-.lnamm{
+
+.lnamm {
   width: 50%;
 }
 
+.mbile {
+  width: 50%;
+}
+
+
 @media only screen and (max-width: 830px) {
-  .laptopinfo{
+  .sddhdd {
+    transform: translateY(0%);
+    width: 100%;
+    display: flex;
+
+  }
+
+  .ssd {
+    display: flex;
+  }
+
+  .hdd {
+    display: flex;
+  }
+
+  .laptopbrand {
+    width: 100%;
+    transform: translateY(-25%);
+
+  }
+
+  .top hr {
+    transform: translateY(3000%);
+  }
+
+  .mid-part {
+    transform: translateY(5%);
+  }
+
+  .mid-top {
+    width: 100%;
+
+  }
+
+  .laptopbrand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+  }
+
+  .mid-top select {
+    width: 94%;
+  }
+
+  #laptopbrand {
+    width: 94%;
+  }
+
+  .laptopinfo {
     display: block;
   }
-.laptopnameandbrand{
-  display: block;
-}
-.mid-top{
-  display: block;
-}
-.mid-mid{
-  display: block;
-}
-.bot-top-top{
-  display: block;
-}
-.laptopinfo input{
-  width: 97%;
-}
-#ram{
-  width: 100%;
-}
-.laptopname{
-  width: 100%;
-}
+
+  .laptopnameandbrand {
+    display: block;
+  }
+
+  .mid-top {
+    display: block;
+  }
+
+  .mid-mid {
+    display: block;
+  }
+
+  .bot-top-top {
+    display: block;
+  }
+
+  .laptopinfo input {
+    width: 94%;
+  }
+
+  .lnamm input {}
+
+  .laptopname {
+    width: 94%;
+  }
 }

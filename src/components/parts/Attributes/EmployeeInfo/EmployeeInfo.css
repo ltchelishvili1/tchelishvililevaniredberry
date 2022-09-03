@@ -123,11 +123,11 @@ select {
 
 @media only screen and (max-width: 830px) {
     #mail {
-        width: 100%;
+        width: 94%;
     }
 
     #number {
-        width: 100%;
+        width: 94%;
     }
 
     .empinfo {
@@ -148,7 +148,7 @@ select {
     }
 
     .name input {
-        width: 100%;
+        width: 94%;
         transform: translateY(-30%);
     }
 
@@ -163,7 +163,7 @@ select {
     }
 
     .surname input {
-        width: 100%;
+        width: 94%;
         transform: translateY(-30%);
     }
 
@@ -199,13 +199,8 @@ select {
 
     .nextcont {
 
-        transform: translate(4%,-110%);
+        transform: translate(-1%,-110%);
     }
-
-
-
-
-
 
     .team select {
         height: 35px;
