@@ -23,6 +23,23 @@ function App() {
   const [brands, setBrands] = useState([])
   const [cpus, setCpus] = useState([])
   const [laptops, setLaptops] = useState([])
+useEffect(() => {
+
+  if (document.body.offsetWidth + 16 < 830) {
+    if (window.location.href.includes("employeeinfo")) {
+        if(document.getElementById("lapt")){
+            document.getElementById("lapt").style.display="none"
+        }
+    }else if(window.location.href.includes("laptopinfo")){
+        if(document.getElementById("emply")){
+            document.getElementById("emply").style.display="none"
+            document.getElementById("hrr2").style.display="none"
+        }
+    }
+}
+
+}, [window.location.href])
+
   useEffect(() => {
     fetch("https://pcfy.redberryinternship.ge/api/teams")
       .then((response) => response.json())

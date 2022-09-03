@@ -87,10 +87,9 @@ const EmployeeInfo = (props) => {
     <div className='empinfo'>
 
 
-      <form>
+      <form className='container'>
         <div className='namesurname'>
           <div className='name'>
-
             <p>სახელი</p>
             {numberValidation()}
             <input id='name' style={ValidateName(EmpInfo.name) ? { border: "1px solid red" } : { border: "1px solid #8AC0E2" }} value={EmpInfo.name} type="text" onChange={(e) => {
@@ -160,7 +159,7 @@ const EmployeeInfo = (props) => {
     
       }
           <div className='position'>
-            <select value={`{"name":"${EmpInfo.position.name}","id":"${EmpInfo.position.id}"}`} onChange={(e) => {
+            <select id='slct' value={`{"name":"${EmpInfo.position.name}","id":"${EmpInfo.position.id}"}`} onChange={(e) => {
               setEmpInfo({
                 ...EmpInfo,
                 position: {
@@ -193,7 +192,7 @@ const EmployeeInfo = (props) => {
             EmpInfo.mail.endsWith("@redberry.ge") || EmpInfo.mail === "" ? { transform: "translateY(-100%)" } : { color: "red", transform: "traslateY(-100%)" }
           } className='pholder'>{EmpInfo.mail.replace(/\s/g, '').length<15&&EmpInfo.mail.endsWith("@redberry.ge")? <span style={{color:"red"}}>არასწორი იმეილის ზომა</span> : <span>უნდა მთავრდებოდეს @redberry.ge-ით</span> }</p>
         </div>
-        <div >
+        <div className="transform" >
           <p className='number'>ნომერი</p>
           <input id='number' style={
             EmpInfo.mail == { border: "1px solid #8AC0E2" } || EmpInfo.mail == "" ? { border: "1px solid #8AC0E2" } :

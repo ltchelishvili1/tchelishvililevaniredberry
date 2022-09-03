@@ -11,9 +11,9 @@ const Header = () => {
             <img src={frame} className="main-page-frame" alt="frame" />
             <form>
                 <div className='btnup'>
-                    <Link  to="/attributes/employeeinfo">
+                    <a  href="/attributes/employeeinfo">
                         <input type="button" value="ჩანაწერის დამატება" />
-                    </Link>
+                    </a>
 
                 </div>
                 <div className='btndown'>
