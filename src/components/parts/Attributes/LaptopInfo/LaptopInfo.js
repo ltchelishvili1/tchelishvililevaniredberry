@@ -285,7 +285,7 @@ const LaptopInfo = (props) => {
 
           </div>
           <div className='mid-mid'>
-            <div className='laptopname' style={{ width: "50%" }}>
+            <div className='laptopname lnamm' >
               <p className='lnamep'>ლეპტოპის RAM(GB)</p>
               <input id='ram' value={laptopInfo.ram} style={{ border: "1px solid #8AC0E2", width: "85%" }} type="number" onChange={(e) => {
                 setlaptopInfo({

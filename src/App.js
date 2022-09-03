@@ -17,28 +17,52 @@ import Listitem from './components/parts/Listitem/Listitem';
 import axios from 'axios';
 const TOKEN = "008eb969a19e7990d2de16d66627150d"
 function App() {
+  const [isMobile, setIsMobile] = useState(false)
   const [upd, forceUpd] = useState(0)
   const [teams, setTeams] = useState([])
   const [positions, setPositions] = useState([])
   const [brands, setBrands] = useState([])
   const [cpus, setCpus] = useState([])
   const [laptops, setLaptops] = useState([])
-useEffect(() => {
+  useEffect(() => {
+    window.screen.width <= 830 ? setIsMobile(true) : setIsMobile(false);
+  }, [window.screen.width]);
 
-  if (document.body.offsetWidth + 16 < 830) {
+  function detectWindowSize() {
+    window.innerWidth <= 760 ? setIsMobile(true) : setIsMobile(false);
+  }
+
+  window.onresize = detectWindowSize;
+
+  if (isMobile) {
+
+
     if (window.location.href.includes("employeeinfo")) {
-        if(document.getElementById("lapt")){
-            document.getElementById("lapt").style.display="none"
-        }
-    }else if(window.location.href.includes("laptopinfo")){
-        if(document.getElementById("emply")){
-            document.getElementById("emply").style.display="none"
-            document.getElementById("hrr2").style.display="none"
-        }
-    }
-}
+      if (document.getElementById("lapt")) {
+        document.getElementById("lapt").style.display = "none"
+        document.getElementById("hrr1").style.display = "none"
+      }
+    } else if (window.location.href.includes("laptopinfo")) {
+      if (document.getElementById("emply")) {
+        document.getElementById("emply").style.display = "none"
+        document.getElementById("hrr2").style.display = "none"
+      }
 
-}, [window.location.href])
+    }
+  } else {
+    if (window.location.href.includes("employeeinfo")) {
+      if (document.getElementById("lapt")) {
+        document.getElementById("lapt").style.display = "block"
+        document.getElementById("hrr1").style.display = "none"
+      }
+    } else if (window.location.href.includes("laptopinfo")) {
+      if (document.getElementById("emply")) {
+        document.getElementById("emply").style.display = "block"
+        document.getElementById("hrr2").style.display = "block"
+      }
+
+    }
+  }
 
   useEffect(() => {
     fetch("https://pcfy.redberryinternship.ge/api/teams")
@@ -80,11 +104,11 @@ useEffect(() => {
         <Route path='/' element={<Header />} />
         <Route path="attributes" element={<Attributes />}>
           <Route path="employeeinfo" element={<EmployeeInfo teams={teams} positions={positions} />} />
-          <Route path="laptopinfo" element={<LaptopInfo  brands={brands} cpus={cpus} />} />
+          <Route path="laptopinfo" element={<LaptopInfo brands={brands} cpus={cpus} />} />
         </Route>
-        <Route path='/laptoplist' element={<Laptoplist  laptops={laptops} />} />
+        <Route path='/laptoplist' element={<Laptoplist laptops={laptops} />} />
         {laptops.map((laptop) => (
-          <Route path={`/laptoplist/laptopid=${laptop.laptop.id}`} element={<Listitem positions={positions} brands={brands} teams={teams} TOKEN={TOKEN}  id={laptop.laptop.id}
+          <Route path={`/laptoplist/laptopid=${laptop.laptop.id}`} element={<Listitem positions={positions} brands={brands} teams={teams} TOKEN={TOKEN} id={laptop.laptop.id}
           />} />
         ))}
       </Routes>
