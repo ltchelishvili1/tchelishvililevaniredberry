@@ -17,7 +17,7 @@ const Listitem = (props) => {
 
     if (data) {
         return <div className='item123'>
-            <img src={back} alt="" style={{scale:"2",cursor:"pointer",transform:"translate(600%,300%)"}} onClick={()=> navigate(-1)} />
+            <img src={back} className="bccc" alt="" style={{scale:"2",cursor:"pointer",transform:"translate(600%,300%)"}} onClick={()=> navigate(-1)} />
         
             <p className='lapinfo' >ლეპტოპის ინფო</p>
             <Item positions={props.positions} brands={props.brands} teams={props.teams} data={data.data}/>

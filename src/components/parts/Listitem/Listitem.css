@@ -7,3 +7,15 @@
     text-align: center;
 
 }
+
+@media only screen and (max-width: 830px) {
+    .lapinfo {
+        font-size: 24px;
+    }
+
+    .bccc {
+        zoom: .7;
+        margin-left: -7rem;
+        margin-bottom: -2.4rem;
+    }
+}

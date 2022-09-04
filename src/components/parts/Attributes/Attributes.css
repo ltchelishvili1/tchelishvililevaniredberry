@@ -18,7 +18,9 @@
 }
 
 
-
+.all{
+    background: #F6F6F6;
+}
 .logoimage {
     padding: 4rem 0 2rem 0;
     position: absolute;
@@ -43,4 +45,23 @@
     border: none;
     width: 70%;
 }
-
+.dsp1{
+    display: none;
+}
+.dsp2{
+    display: none;
+}
+@media only screen and (max-width: 830px) {
+    
+.backarrow {
+    margin-left: -7rem;
+    margin-bottom: -5rem;
+    zoom: 0.6
+  }
+.dsp1{
+    display: block;
+}
+.dsp2{
+    display: block;
+}
+  }

@@ -17,42 +17,53 @@ const Attributes = () => {
         }
 
     }
- 
+
 
     return (
-        <div>
-             
-             <img src={back} alt="" style={{scale:"2",cursor:"pointer",transform:"translate(600%,300%)"}} onClick={()=> navigate(-1)} />
+        <div className='all'>
+
+            <img src={back} alt="" className='backarrow' style={{ scale: "2", cursor: "pointer", transform: "translate(600%,300%)" }} onClick={() => navigate(-1)} />
             <div className='nav'>
                 <div id='emply' className='empp mobdispempp'>
-                    <Link className='attrtxt' onClick={() => handleClick(1)} style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to='employeeinfo'> <p>თანამშრომლის ინფო</p></Link>
-                    <hr
-                        id='try'
-                        style={
-                            window.location.href.includes("employeeinfo") ? {
-                                opacity: "1"
-                            } : { opacity: "0" }
-                        }
-                    />
-                   
+                    <div >
+                        <Link className='attrtxt' onClick={() => handleClick(1)} style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to='employeeinfo'> <p>თანამშრომლის ინფო</p></Link>
+                        <hr
+                            id='try'
+                            style={
+                                window.location.href.includes("employeeinfo") ? {
+                                    opacity: "1"
+                                } : { opacity: "0" }
+                            }
+                        />
+
+                    </div>
+                    <p className='dsp1' style={{ fontSize: "14px", opacity: "0.5", transform: "translateX(30%)" }}>1/2</p>
                 </div>
-               
+
+
 
                 <div className=' mobdisplapt' id='lapt'
                 >
-                    <Link className='attrtxt' onClick={() => handleClick(0)} style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to='laptopinfo'><p  >ლეპტოპის მახასიათებლები</p></Link>
-                    <hr
-                        id='hrr2'
-                        style={
-                            window.location.href.includes("laptopinfo") ? {
-                                opacity: "1"
-                            } : { opacity: "0" }
-                        }
-                    />
+                    <div>
+
+                        <Link className='attrtxt' onClick={() => handleClick(0)} style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to='laptopinfo'><p  >ლეპტოპის მახასიათებლები</p></Link>
+                        <hr
+                            id='hrr2'
+                            style={
+                                window.location.href.includes("laptopinfo") ? {
+                                    opacity: "1"
+                                } : { opacity: "0" }
+                            }
+                        />
+                    </div>
+                    <p className='dsp2' style={{ fontSize: "14px", opacity: "0.5", transform: "translateX(35%)" }}>2/2</p>
                 </div>
             </div>
             <Outlet />
+
             <img className='logoimage' src={logo} alt="logo" />
+
+
         </div>
     )
 }

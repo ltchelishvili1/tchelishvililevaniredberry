@@ -1,4 +1,3 @@
-
 .popup {
     position: fixed;
     top: 0;
@@ -53,7 +52,7 @@
     width: 100%;
     height: 50px;
     cursor: pointer;
-    
+
 }
 
 .poppupmain {
@@ -65,9 +64,31 @@
     text-align: center;
     cursor: pointer;
 }
-.mainp{
+
+.mainp {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
+}
+
+@media only screen and (max-width: 830px) {
+    .imgcont {
+        zoom: .8;
+    }
+
+    .added {
+        transform: translateY(-40%);
+        font-size: 20px;
+    }
+
+    .inputcont {
+        width: 100%;
+
+    }
+    .popup-inner{
+        width: 60%;
+        height: 70%;
+       
+    }
 }

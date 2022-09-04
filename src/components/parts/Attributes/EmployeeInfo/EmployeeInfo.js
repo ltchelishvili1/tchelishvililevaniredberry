@@ -219,10 +219,10 @@ const EmployeeInfo = (props) => {
           <p style={
             EmpInfo.number == null || EmpInfo.number == "" ? { transform: "translateY(-100%)" } :
               numberValidation() ? { transform: "translateY(-100%)" } : { color: "red", transform: "traslateY(-100%)" }
-          } className='pholder ph1'>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</p>
+          } className='pholder ph1'><span className='spn1'>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</span><span className='spn2'>ქართული მობ–ნომრის ფორმატი</span></p>
         </div>
         <div className='nextcont'>
-          <input className='next' onClick={() => handleClick() ? navigate("/attributes/laptopinfo") : validateAll()} type="button" value="შემდეგი" />
+         <a> <input className='next' onClick={() => handleClick() ? navigate("/attributes/laptopinfo") : validateAll()} type="button" value="შემდეგი" /> </a>
         </div>
       </form>
     </div>

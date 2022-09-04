@@ -6,7 +6,7 @@ const Laptoplist = (props) => {
     const navigate = useNavigate()
     return (
         <div>
-            <img src={back} alt="" style={{ scale: "2", cursor: "pointer", transform: "translate(600%,300%)" }} onClick={() => navigate(-1)} />
+            <img src={back} alt="" className='bbarrow' style={{ scale: "2", cursor: "pointer", transform: "translate(600%,300%)" }} onClick={() => navigate(-1)} />
             <div className='laptoplist'>
                 <p className='notelistname'>ჩანაწერების სია</p>
                 <div className='containernotes'>

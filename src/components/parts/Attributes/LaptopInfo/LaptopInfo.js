@@ -222,7 +222,7 @@ const LaptopInfo = (props) => {
     localStorage.setItem('LaptInfo', JSON.stringify(laptopInfo));
   }, [laptopInfo]);
   return (
-    <div className=' laptopinfo'>
+    <div className='laptopinfo'>
       {console.log(result)}
       <div className='container'>
         <div className='top'>

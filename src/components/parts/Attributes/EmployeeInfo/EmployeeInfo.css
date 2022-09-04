@@ -5,6 +5,8 @@
     max-width: 786px;
     zoom: 1.3;
     border-radius: 30px;
+    padding: 0 6rem;
+
 
 }
 
@@ -36,20 +38,25 @@ select {
     width: 50%;
     border-radius: 0px;
 }
-#slct{
+
+#slct {
     width: 99%;
 }
+
 .surname {
     width: 50%;
     transform: translateX(12%);
 }
-#teamSelect{
+
+#teamSelect {
     width: 99%;
 }
-.nextcont{
+
+.nextcont {
     margin-top: 3rem;
     width: 100%;
 }
+
 .pholder {
     transform: translateY(-50%);
     font-size: 12px;
@@ -84,7 +91,7 @@ select {
     padding-bottom: 3rem;
 }
 
-.mail{
+.mail {
     padding-top: 3rem;
 }
 
@@ -131,8 +138,16 @@ select {
 #number {
     width: 98%;
 }
-
+.spn2{
+    display: none;
+}
 @media only screen and (max-width: 830px) {
+    .spn1{
+        display: none;
+    }
+    .spn2{
+        display: block;
+    }
     #mail {
         width: 94%;
     }
@@ -146,7 +161,12 @@ select {
 
 
     }
-
+    .number{
+        transform: translateY(-100%);
+    }
+    #empinfomail{
+        transform: translateY(-100%);   
+    }
     .namesurname {
         display: block;
         width: 100%;
@@ -210,7 +230,7 @@ select {
 
     .nextcont {
 
-        transform: translate(-1%,-110%);
+        transform: translate(-1%, -110%);
     }
 
     .team select {
@@ -227,28 +247,34 @@ select {
         padding-bottom: 2rem;
     }
 
-    .empinfo{
+    .empinfo {
+        padding: 0;
         transform: translateY(-7%);
         background: transparent;
         max-height: 700px;
     }
-#mail{
-    transform: translateY(-70%);
-}
-.ph1{
-    margin-top: -.4rem;
-}
-.ninput{
-    transform: translateY(-70%);
-}
 
-.mail{
-    transform: translateY(-95%);
-}
-.transform{
-    margin-top: -2rem;
-}
-.nextcont input{
-    width: 50%;
-}
+    #mail {
+        transform: translateY(-70%);
+    }
+
+    .ph1 {
+        margin-top: -.4rem;
+    }
+
+    .ninput {
+        transform: translateY(-70%);
+    }
+
+    .mail {
+        transform: translateY(-95%);
+    }
+
+    .transform {
+        margin-top: -2rem;
+    }
+
+    .nextcont input {
+        width: 50%;
+    }
 }
