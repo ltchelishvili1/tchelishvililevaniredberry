@@ -13,6 +13,10 @@
 
 }
 
+.mobpict {
+    display: none;
+}
+
 .main form {
     display: flex;
     flex-direction: column;
@@ -33,10 +37,28 @@
     letter-spacing: 0em;
     cursor: pointer;
 }
-.btnup{
+
+.btnup {
     padding-bottom: 2rem;
 }
 
 .main form input:hover {
-    background: #3384df; 
+    background: #3384df;
+}
+
+
+@media only screen and (max-width: 830px) {
+    .main-page-frame {
+        display: none;
+    }
+
+    .mobpict {
+        display: block;
+        padding-top: 5rem;
+    }
+
+    .main form {
+        margin-top: -3rem;
+
+    }
 }

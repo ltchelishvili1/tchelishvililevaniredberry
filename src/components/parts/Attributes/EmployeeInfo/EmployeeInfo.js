@@ -200,7 +200,7 @@ const EmployeeInfo = (props) => {
             }} />
           <p style={
             EmpInfo.mail.endsWith("@redberry.ge") || EmpInfo.mail === "" ? { transform: "translateY(-100%)" } : { color: "red", transform: "traslateY(-100%)" }
-          } className='pholder'>{EmpInfo.mail.replace(/\s/g, '').length < 15 && EmpInfo.mail.endsWith("@redberry.ge") ? <span style={{ color: "red" }}>არასწორი იმეილის ზომა</span> : <span>უნდა მთავრდებოდეს @redberry.ge-ით</span>}</p>
+          } className='pholder ph1'>{EmpInfo.mail.replace(/\s/g, '').length < 15 && EmpInfo.mail.endsWith("@redberry.ge") ? <span style={{ color: "red" }}>არასწორი იმეილის ზომა</span> : <span>უნდა მთავრდებოდეს @redberry.ge-ით</span>}</p>
         </div>
         <div className="transform" >
           <p id='empinfonumber' style={
@@ -219,7 +219,7 @@ const EmployeeInfo = (props) => {
           <p style={
             EmpInfo.number == null || EmpInfo.number == "" ? { transform: "translateY(-100%)" } :
               numberValidation() ? { transform: "translateY(-100%)" } : { color: "red", transform: "traslateY(-100%)" }
-          } className='pholder'>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</p>
+          } className='pholder ph1'>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</p>
         </div>
         <div className='nextcont'>
           <input className='next' onClick={() => handleClick() ? navigate("/attributes/laptopinfo") : validateAll()} type="button" value="შემდეგი" />

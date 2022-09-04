@@ -305,11 +305,11 @@ input[type='radio']:after {
   }
 
   .hr1 {
-    margin-top: -4rem
+    margin-top: -4rem;
   }
 
   .mid-part {
-    margin-top: -2rem;
+    margin-top: -5rem;
   }
 
   .lptcpu {
@@ -323,7 +323,7 @@ input[type='radio']:after {
   transform: translateY(7000%);
  }
  .bot-part{
-  padding-top: 1.4rem;
+  padding-top: 2.4rem;
  }
 
   .rname span {
@@ -335,7 +335,6 @@ input[type='radio']:after {
     display: flex;
     transform: translate(12%, -100%);
   }
-
   .inpp {
     width: 35%;
     font-size: 10px;
@@ -398,13 +397,25 @@ input[type='radio']:after {
   }
 
   .mid-top select {
-    width: 94%;
+    width: 100%;
   }
 
   #laptopbrand {
-    width: 94%;
+    width: 93%;
   }
-
+  #laptopcpu{
+   width: 93%;
+  }
+.hr1{
+  float: left;
+  width: 93%; 
+}
+.hrrr2{
+ 
+  float: left;
+  width: 93%;
+  
+}
   .laptopinfo {
     display: block;
   }

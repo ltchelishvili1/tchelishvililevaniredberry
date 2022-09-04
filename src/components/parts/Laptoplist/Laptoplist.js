@@ -6,7 +6,6 @@ const Laptoplist = (props) => {
     return (
         <div className='laptoplist'>
             <p className='notelistname'>ჩანაწერების სია</p>
-            {console.log(props.laptops)}
             <div className='containernotes'>
                 <div className='notelist'>
                     {props.laptops.map((x) => (

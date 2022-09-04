@@ -36,12 +36,20 @@ select {
     width: 50%;
     border-radius: 0px;
 }
-
+#slct{
+    width: 99%;
+}
 .surname {
     width: 50%;
     transform: translateX(12%);
 }
-
+#teamSelect{
+    width: 99%;
+}
+.nextcont{
+    margin-top: 3rem;
+    width: 100%;
+}
 .pholder {
     transform: translateY(-50%);
     font-size: 12px;
@@ -224,5 +232,23 @@ select {
         background: transparent;
         max-height: 700px;
     }
+#mail{
+    transform: translateY(-70%);
+}
+.ph1{
+    margin-top: -.4rem;
+}
+.ninput{
+    transform: translateY(-70%);
+}
 
+.mail{
+    transform: translateY(-95%);
+}
+.transform{
+    margin-top: -2rem;
+}
+.nextcont input{
+    width: 50%;
+}
 }

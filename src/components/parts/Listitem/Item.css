@@ -1,4 +1,4 @@
-.item{
+.item {
     padding-top: 3rem;
     background: #ffff;
     margin: 10px auto;
@@ -10,29 +10,66 @@
     border-radius: 30px;
 }
 
-.contt{
+.contt {
+
     display: flex;
     justify-content: space-between;
     padding-bottom: 2rem;
 }
-.itemtopleft{
+
+.itemtopleft {
     width: 50%;
-    
+
 }
-.itemtopright{
-    
+
+.itemtopright {
+
     width: 45%;
 }
-.itemtopleft img{
+
+.itemtopleft img {
     border-radius: 8px;
     width: 100%;
     height: 350px;
-    
-    
+
+
 }
-.item span{
+
+.item span {
     opacity: 0.6;
 }
-.item p{
+
+.item p {
     font-weight: 500;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 830px) {
+    .contt {
+        font-size: 12px;
+    }
+
+    .contt2 {
+        display: block;
+    }
+
+    .itemtopleft {
+        width: 100%;
+    }
+
+    .lapc {
+        display: none;
+    }
+
+    .lptpadd {
+        margin-left: -2rem;
+    }
+
+    .cpustf {
+        margin-left: -.5rem;
+    }
+
+    .contstf {
+        margin-left: 2rem;
+    }
 }

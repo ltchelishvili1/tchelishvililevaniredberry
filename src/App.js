@@ -40,7 +40,7 @@ function App() {
     if (window.location.href.includes("employeeinfo")) {
       if (document.getElementById("lapt")) {
         document.getElementById("lapt").style.display = "none"
-        document.getElementById("hrr1").style.display = "none"
+        document.getElementById("try").style.display = "none"
       }
     } else if (window.location.href.includes("laptopinfo")) {
       if (document.getElementById("emply")) {
@@ -53,7 +53,7 @@ function App() {
     if (window.location.href.includes("employeeinfo")) {
       if (document.getElementById("lapt")) {
         document.getElementById("lapt").style.display = "block"
-        document.getElementById("hrr1").style.display = "none"
+        document.getElementById("try").style.display = "block"
       }
     } else if (window.location.href.includes("laptopinfo")) {
       if (document.getElementById("emply")) {
