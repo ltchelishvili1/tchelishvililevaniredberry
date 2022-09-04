@@ -5,9 +5,10 @@ import './LaptopInfo.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import lari from '../../../assets/Vector.png'
-import error from '../../../assets/error.png'
 import Popup from '../../Popup/Popup';
 import succ from '../../../assets/imguploaded.png'
+import err from '../../../assets/mblerr.png'
+import { Link } from 'react-router-dom';
 const LaptopInfo = (props) => {
   const [error, setError] = useState(false)
   const [trigger, setTrigger] = useState(false)
@@ -76,12 +77,21 @@ const LaptopInfo = (props) => {
     }
     if (laptopInfo.laptopnName == "") {
       document.getElementById("laptopname").style.border = "1px solid red"
+      document.getElementById("err1").style.display = "block"
+      document.getElementById("namme").style.color = "red"
+      document.getElementById("numlet").style.color = "red"
+
     } else {
       attsCheck++
       document.getElementById("laptopname").style.border = "1px solid #62A1EB"
+      document.getElementById("err1").style.display = "none"
+      document.getElementById("namme").style.color = "black"
+      document.getElementById("numlet").style.color = "black"
+    
     }
     if (laptopInfo.laptopBrand.name == "ლეპტოპის ბრენდი" || laptopInfo.laptopBrand.name == "") {
       document.getElementById("laptopbrand").style.border = "1px solid red"
+      
     } else {
       attsCheck++
       document.getElementById("laptopbrand").style.border = "1px solid #62A1EB"
@@ -94,39 +104,66 @@ const LaptopInfo = (props) => {
     }
     if (laptopInfo.CPUcore == "") {
       document.getElementById("cpucore").style.border = "1px solid red"
+      document.getElementById("err2").style.display = "block"
+      document.getElementById("core").style.color = "red"
+      document.getElementById("onlet1").style.color = "red"
     } else {
       attsCheck++
       document.getElementById("cpucore").style.border = "1px solid #62A1EB"
+      document.getElementById("err2").style.display = "none"
+      document.getElementById("core").style.color = "black"
+      document.getElementById("onlet1").style.color = "black"
+      
     }
     if (laptopInfo.CPUgen == "") {
       document.getElementById("cpugen").style.border = "1px solid red"
+      document.getElementById("err3").style.display = "block"
+      document.getElementById("thread").style.color = "red"
+      document.getElementById("onlet2").style.color = "red"
     } else {
       attsCheck++
       document.getElementById("cpugen").style.border = "1px solid #62A1EB"
+      document.getElementById("err3").style.display = "none"
+      document.getElementById("thread").style.color = "black"
+      document.getElementById("onlet2").style.color = "black"
     }
     if (laptopInfo.ram == "") {
       document.getElementById("ram").style.border = "1px solid red"
+      document.getElementById("err4").style.display = "block"
+      document.getElementById("ramm").style.color = "red"
+      document.getElementById("onlet2").style.color = "red"
     } else {
       attsCheck++
       document.getElementById("ram").style.border = "1px solid #62A1EB"
+      document.getElementById("err4").style.display = "none"
+      document.getElementById("ramm").style.color = "black"
+      document.getElementById("onlet2").style.color = "black"
     }
     if (laptopInfo.memoryType == "") {
-      document.getElementById("memorytype").style.border = "1px solid red"
+      document.getElementById("memorytype").style.color = "red"
+      document.getElementById("err5").style.display = "block"
     } else {
       attsCheck++
-      document.getElementById("memorytype").style.border = "none"
+      document.getElementById("memorytype").style.color = "black"
+      document.getElementById("err5").style.display = "none"
     }
     if (laptopInfo.laptopPrice == "") {
-      document.getElementById("laptopprice").style.border = "none"
+      document.getElementById("laptopprice").style.border = "1px solid red"
+      document.getElementById("err6").style.display = "block"
+      document.getElementById("price").style.color = "red"
     } else {
       attsCheck++
       document.getElementById("laptopprice").style.border = "1px solid #62A1EB"
+      document.getElementById("err6").style.display = "none"
+      document.getElementById("price").style.color = "black"
     }
     if (laptopInfo.laptopCond == "") {
-      document.getElementById("laptopcond").style.border = "1px solid red"
+      document.getElementById("laptopcond").style.color = "red"
+      document.getElementById("err7").style.display = "block"
     } else {
       attsCheck++
-      document.getElementById("laptopcond").style.border = "none"
+      document.getElementById("laptopcond").style.color = "black"
+      document.getElementById("err7").style.display = "none"
     }
     const properties = Object.getOwnPropertyNames(laptopInfo)
     let count = 0;
@@ -195,7 +232,7 @@ const LaptopInfo = (props) => {
               <img id='errorimg' src={error} style={{ display: "none" }} alt="" />
               <p id='imgname'>ჩააგდე ან ატვირთე</p>
               <p id='imgname1' style={{ transform: "translateY(-70%)", paddingBottom: "1rem" }}>ლეპტოპის ფოტო</p>
-              <div id="uplbtn" style={{width:"100%",transform:"translateX(-10%)"}}>
+              <div id="uplbtn" style={{ width: "100%", transform: "translateX(-10%)" }}>
                 <input type="file" id='file' style={{ display: "none" }} name="file" onChange={(e) => handleFile(e)} multiple />
                 <label className='labelbtn' for="file">ატვირთე</label>
               </div>
@@ -205,11 +242,11 @@ const LaptopInfo = (props) => {
                 <div className='imgcontsucc'>
                   <img src={succ} alt="succ" />
                   <div className='sizename'>
-                    <p style={{ color: "black" }}>{result.name},</p>
-                    <p style={{ color: "black", opacity: "0.5", transform: "translateX(-30%)" }}>{Math.round(bytesToMegaBytes(result.size) * 100) / 100} mb</p>
+                    <p className='rname' style={{ color: "black" }}><span>{result.name},</span></p>
+                    <p className='rsize' style={{ color: "black", opacity: "0.5", transform: "translateX(-30%)", minWidth: "40px" }}><span>{Math.round(bytesToMegaBytes(result.size) * 100) / 100} mb</span> </p>
                   </div>
                 </div>
-                <div style={{ transform: "translateX(-43%)" }}>
+                <div style={{ transform: "translateX(-43%)" }} className='inpp'>
                   <input type="file" id='file' style={{ display: "none" }} name="file" onChange={(e) => handleFile(e)} multiple />
                   <label className='labelbtn' for="file">თავიდან ატვირთე</label>
 
@@ -219,7 +256,10 @@ const LaptopInfo = (props) => {
 
           <div className='laptopnameandbrand'>
             <div className='laptopname'>
-              <p className='lnamep'>ლეპტოპის სახელი</p>
+              <div style={{ display: "flex" }}>
+                <p id="namme" className='lnamep'>ლეპტოპის სახელი</p>
+                <img id='err1' style={{ transform: "translate(20%,70%)",display:"none" }} width='20px' height="20px" src={err} alt="err" />
+              </div>
               <input id='laptopname' style={/^[a-zA-z0-9,!@#$%^&*()_+=\s]+$/g.test(laptopInfo.laptopnName) || laptopInfo.laptopnName == "" ? { border: "1px solid #8AC0E2" } : { border: "1px solid red" }} value={laptopInfo.laptopnName} onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
@@ -227,7 +267,7 @@ const LaptopInfo = (props) => {
                 })
               }} type="text" />
               <p className='holder' >
-                <span style={/^[a-zA-z0-9,!@#$%^&*()_+=\s]+$/g.test(laptopInfo.laptopnName) || laptopInfo.laptopnName == "" ? null : { color: "red" }}>ლათინური ასოები, ციფრები, !@#$%^&*()_+= </span>
+                <span id='numlet' style={/^[a-zA-z0-9,!@#$%^&*()_+=\s]+$/g.test(laptopInfo.laptopnName) || laptopInfo.laptopnName == "" ? null : { color: "red" }}>ლათინური ასოები, ციფრები, !@#$%^&*()_+= </span>
               </p>
             </div>
             <div className='laptopbrand'>
@@ -250,7 +290,7 @@ const LaptopInfo = (props) => {
 
             </div>
           </div>
-          <hr
+          <hr className='hr1'
             style={{
               color: "#C7C7C7",
               backgroundColor: "#C7C7C7",
@@ -261,7 +301,7 @@ const LaptopInfo = (props) => {
         </div>
         <div className='mid-part'>
           <div className='mid-top'>
-            <div className='laptopbrand'>
+            <div className='laptopbrand lptcpu'>
               <select id='laptopcpu' value={laptopInfo.CPU} style={{ height: "35px", fontWeight: "600", transform: "translateY(176%)" }} className='lbrandselect' onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
@@ -276,8 +316,12 @@ const LaptopInfo = (props) => {
                 }
               </select>
             </div>
-            <div className='laptopname'>
-              <p className='lnamep'>CPU-ს ბირთვი</p>
+            <div className='laptopname '>
+              <div style={{ display: "flex" }}>
+                <p id='core' className='lnamep'>CPU-ს ბირთვი</p>
+                <img id='err2' style={{ transform: "translate(20%,70%)",display:"none" }} width='20px' height="20px" src={err} alt="err" />
+              </div>
+
               <input id='cpucore' value={laptopInfo.CPUcore} style={{ border: "1px solid #8AC0E2" }} type="number" onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
@@ -285,12 +329,15 @@ const LaptopInfo = (props) => {
                 })
               }} />
               <p className='holder'>
-                <span>მხოლოდ ციფრები </span>
+                <span id='onlet1'>მხოლოდ ციფრები </span>
               </p>
             </div>
 
-            <div className='laptopname'>
-              <p className='lnamep'>CPU-ს ნაკადი</p>
+            <div className='laptopname lnamepp'>
+              <div style={{ display: "flex" }}>
+                <p id='thread' className='lnamep'>CPU-ს ნაკადი</p>
+                <img id='err3' style={{ transform: "translate(20%,70%)",display:"none" }} width='20px' height="20px" src={err} alt="err" />
+              </div>
               <input id='cpugen' value={laptopInfo.CPUgen} style={{ border: "1px solid #8AC0E2" }} type="number" onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
@@ -298,14 +345,17 @@ const LaptopInfo = (props) => {
                 })
               }} />
               <p className='holder'>
-                <span>მხოლოდ ციფრები </span>
+                <span  id='onlet2'>მხოლოდ ციფრები </span>
               </p>
             </div>
 
           </div>
           <div className='mid-mid'>
-            <div className='laptopname lnamm' >
-              <p className='lnamep'>ლეპტოპის RAM(GB)</p>
+            <div className='laptopname lnamm lnamepp' >
+              <div style={{ display: "flex" }}>
+                <p id="ramm" className='lnamep'>ლეპტოპის RAM(GB)</p>
+                <img id='err4' style={{ transform: "translate(20%,70%)",display:"none" }} width='20px' height="20px" src={err} alt="err" />
+              </div>
               <input id='ram' value={laptopInfo.ram} style={{ border: "1px solid #8AC0E2" }} type="number" onChange={(e) => {
                 setlaptopInfo({
                   ...laptopInfo,
@@ -313,11 +363,14 @@ const LaptopInfo = (props) => {
                 })
               }} />
               <p className='holder'>
-                <span>მხოლოდ ციფრები </span>
+                <span  id='onlet3'>მხოლოდ ციფრები </span>
               </p>
             </div>
-            <div id='memorytype' style={{ paddingLeft: ".5rem" }} className='mid-bot-right'>
-              <p className='lnamep'>მეხსიერების ტიპი</p>
+            <div style={{ paddingLeft: ".5rem" }} className='mid-bot-right'>
+              <div style={{ display: "flex" }}>
+                <p id='memorytype' className='lnamep'>მეხსიერების ტიპი</p>
+                <img id='err5' style={{ transform: "translate(20%,70%)",display:"none" }} width='20px' height="20px" src={err} alt="err" />
+              </div>
               <div style={{ display: "flex" }} className='sddhdd'>
                 <div style={{ transform: "translateX(-12%)" }} className='ssd' onChange={(e) => {
                   setlaptopInfo({
@@ -342,7 +395,7 @@ const LaptopInfo = (props) => {
           </div>
 
         </div>
-        <hr
+        <hr className='hrrr2'
           style={{
             color: "#C7C7C7",
             backgroundColor: "#C7C7C7",
@@ -365,7 +418,10 @@ const LaptopInfo = (props) => {
 
               </div>
               <div className='laptopname mbile' >
-                <p className='lnamep'>ლეპტოპის ფასი</p>
+                <div style={{ display: "flex" }}>
+                  <p id='price' className='lnamep'>ლეპტოპის ფასი</p>
+                  <img id='err6' style={{ transform: "translate(20%,70%)",display:"none" }} width='20px' height="20px" src={err} alt="err" />
+                </div>
                 <input id='laptopprice' value={laptopInfo.laptopPrice} style={{ border: "1px solid #8AC0E2" }} type="number" onChange={(e) => {
                   setlaptopInfo({
                     ...laptopInfo,
@@ -383,8 +439,11 @@ const LaptopInfo = (props) => {
             </div>
           </div>
           <div className='bot-bot' style={{ padding: "3rem 0" }}>
-            <div id='laptopcond' style={{ paddingLeft: ".4rem" }} className='midbbr mid-bot-right'>
-              <p className='lnamep'>ლეპტოპის მდგომარეობა</p>
+            <div style={{ paddingLeft: ".4rem" }} className='midbbr mid-bot-right'>
+              <div style={{ display: "flex" }}>
+                <p id='laptopcond' className='lnamep'>ლეპტოპის მდგომარეობა</p>
+                <img id='err7' style={{ transform: "translate(20%,70%)",display:"none" }} width='20px' height="20px" src={err} alt="err" />
+              </div>
               <div style={{ display: "flex" }} className='sddhdd'>
                 <div style={{ transform: "translateX(-12%)" }} className='ssd' onChange={(e) => {
                   setlaptopInfo({
@@ -412,11 +471,11 @@ const LaptopInfo = (props) => {
           <Popup trigger={trigger} error="success" />
 
 
-          <div>
-            <p>უკან</p>
+          <div className='back'>
+          <Link style={{textDecoration:"none",color:"#62A1EB"}} to="/attributes/employeeinfo"><p>უკან</p></Link>  
           </div>
           <div className='submitbutton'>
-            <input className='submit' type="button" value="შემდეგი" onClick={() => handleSubmit()} />
+            <input className='submit' type="button" value="დამახსოვრება" onClick={() => handleSubmit()} />
             {error ? <p style={{ fontSize: ".8rem", color: "red", padding: "2rem 0 0 .7rem" }}>გადაამოწმე მონაცემები</p> : null}
           </div>
         </div>
