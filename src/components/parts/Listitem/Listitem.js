@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './Listitem.css'
 import Item from './Item'
+import back from '../../assets/back.png'
+import { useNavigate } from 'react-router-dom'
 const Listitem = (props) => {    
+    const navigate =useNavigate()
     const [data, setData] = useState(null);
     useEffect(() => {
         const fetchData = async () => {
@@ -14,6 +17,8 @@ const Listitem = (props) => {
 
     if (data) {
         return <div className='item123'>
+            <img src={back} alt="" style={{scale:"2",cursor:"pointer",transform:"translate(600%,300%)"}} onClick={()=> navigate(-1)} />
+        
             <p className='lapinfo' >ლეპტოპის ინფო</p>
             <Item positions={props.positions} brands={props.brands} teams={props.teams} data={data.data}/>
         </div>;

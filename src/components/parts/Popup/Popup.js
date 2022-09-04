@@ -6,6 +6,7 @@ function Popup(props) {
     const navigate = useNavigate()
     return (props.trigger) ? (
         <div className='popup'>
+            
             <div className='popup-inner'>
                 <div className='imgcont'>
                     <img src={succFram} alt="succFrame" />

@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './Attributes.css'
 import logo from '../../assets/LOGO-10 2.png'
+import back from '../../assets/back.png'
 const Attributes = () => {
+    const navigate = useNavigate()
     function handleClick(x) {
         if (document.body.offsetWidth + 16 > 829) {
             if (x == 1) {
@@ -19,6 +21,8 @@ const Attributes = () => {
 
     return (
         <div>
+             
+             <img src={back} alt="" style={{scale:"2",cursor:"pointer",transform:"translate(600%,300%)"}} onClick={()=> navigate(-1)} />
             <div className='nav'>
                 <div id='emply' className='empp mobdispempp'>
                     <Link className='attrtxt' onClick={() => handleClick(1)} style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to='employeeinfo'> <p>თანამშრომლის ინფო</p></Link>

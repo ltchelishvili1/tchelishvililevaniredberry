@@ -16,9 +16,15 @@ import Laptoplist from './components/parts/Laptoplist/Laptoplist';
 import Listitem from './components/parts/Listitem/Listitem';
 import axios from 'axios';
 const TOKEN = "008eb969a19e7990d2de16d66627150d"
+
+
+
+
+       
+   
+
 function App() {
   const [isMobile, setIsMobile] = useState(false)
-  const [upd, forceUpd] = useState(0)
   const [teams, setTeams] = useState([])
   const [positions, setPositions] = useState([])
   const [brands, setBrands] = useState([])
@@ -100,6 +106,7 @@ function App() {
 
   return (
     <BrowserRouter>
+           
       <Routes>
         <Route path='/' element={<Header />} />
         <Route path="attributes" element={<Attributes />}>
@@ -111,6 +118,7 @@ function App() {
           <Route path={`/laptoplist/laptopid=${laptop.laptop.id}`} element={<Listitem positions={positions} brands={brands} teams={teams} TOKEN={TOKEN} id={laptop.laptop.id}
           />} />
         ))}
+
       </Routes>
     </BrowserRouter>
   );
