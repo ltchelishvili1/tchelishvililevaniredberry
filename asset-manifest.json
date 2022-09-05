@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/tchelishvililevaniredberry/static/css/main.573e9183.css",
-    "main.js": "/tchelishvililevaniredberry/static/js/main.bf7f5e18.js",
+    "main.css": "/tchelishvililevaniredberry/static/css/main.331246f8.css",
+    "main.js": "/tchelishvililevaniredberry/static/js/main.b2397942.js",
     "static/js/787.44849616.chunk.js": "/tchelishvililevaniredberry/static/js/787.44849616.chunk.js",
     "static/media/HelveticaNeue.ttc": "/tchelishvililevaniredberry/static/media/HelveticaNeue.67d426c3bd180e2ea838.ttc",
     "static/media/Frame.png": "/tchelishvililevaniredberry/static/media/Frame.4997c71193b8a18ef7ae.png",
+    "static/media/Group.png": "/tchelishvililevaniredberry/static/media/Group.5721545f8391a64ab578.png",
     "static/media/logo.svg": "/tchelishvililevaniredberry/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/tchelishvililevaniredberry/index.html",
-    "main.573e9183.css.map": "/tchelishvililevaniredberry/static/css/main.573e9183.css.map",
-    "main.bf7f5e18.js.map": "/tchelishvililevaniredberry/static/js/main.bf7f5e18.js.map",
+    "main.331246f8.css.map": "/tchelishvililevaniredberry/static/css/main.331246f8.css.map",
+    "main.b2397942.js.map": "/tchelishvililevaniredberry/static/js/main.b2397942.js.map",
     "787.44849616.chunk.js.map": "/tchelishvililevaniredberry/static/js/787.44849616.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.573e9183.css",
-    "static/js/main.bf7f5e18.js"
+    "static/css/main.331246f8.css",
+    "static/js/main.b2397942.js"
   ]
 }
