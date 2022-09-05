@@ -11,6 +11,7 @@ const Header = () => {
             <img src={logo} className="main-page-logo" alt="logo" />
             <img src={frame} className="main-page-frame" alt="frame" />
             <img src={group} className="mobpict" alt="frame" />
+            <div></div>
             <form>
                 <div className='btnup'>
                     <Link  href="attributes/employeeinfo">
