@@ -22,7 +22,9 @@ const Attributes = () => {
     return (
         <div className='all'>
 
-            <img src={back} alt="" className='backarrow' style={{ scale: "2", cursor: "pointer", transform: "translate(600%,300%)" }} onClick={() => navigate(-1)} />
+            <img src={back} alt="" className='backarrow' style={{ scale: "2", cursor: "pointer", transform: "translate(600%,300%)" }} onClick={() => 
+               {window.location.reload(); 
+                navigate(-1)}} />
             <div className='nav'>
                 <div id='emply' className='empp mobdispempp'>
                     <div >
