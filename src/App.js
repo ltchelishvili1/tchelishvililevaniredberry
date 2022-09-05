@@ -108,7 +108,7 @@ function App() {
     <BrowserRouter>
            
       <Routes>
-        <Route path='/' element={<Header />} />
+        <Route path='/tchelishvililevaniredberry' element={<Header />} />
         <Route path="attributes" element={<Attributes />}>
           <Route path="employeeinfo" element={<EmployeeInfo teams={teams} positions={positions} />} />
           <Route path="laptopinfo" element={<LaptopInfo brands={brands} cpus={cpus} />} />
