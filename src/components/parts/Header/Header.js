@@ -13,7 +13,7 @@ const Header = () => {
             <img src={group} className="mobpict" alt="frame" />
             <form>
                 <div className='btnup'>
-                    <a  href="/tchelishvililevaniredberry/attributes/employeeinfo">
+                    <a  href="/attributes/employeeinfo">
                         <input type="button" value="ჩანაწერის დამატება" />
                     </a>
 
