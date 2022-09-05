@@ -18,9 +18,13 @@ const EmployeeInfo = (props) => {
     }
 
   })
+  function tempp(){
+    window.location = "/attributes/laptopinfo";
+    
+  }
   function numberValidation() {
 
-    return EmpInfo.number.startsWith("+9955") && EmpInfo.number.length == 13;
+    return EmpInfo.number.startsWith("+9955") && EmpInfo.number.length == 13 && /^\d+$/.test(EmpInfo.number.slice(1,EmpInfo.number.length));
   }
 
   function ValidateName(name) {
@@ -156,7 +160,7 @@ const EmployeeInfo = (props) => {
               })
             }}>
 
-              <option value={`{"name":"","id":"null","posName":"sd"}`} selected disabled hidden>თიმი</option>
+            
               {props.teams.map((team) => (
                 <option style={{ width: "100%" }} value={`{"name":"${team.name}","id":"${team.id}","posName":"sd"}`} key={team.id}>{team.name}</option>
               ))}
@@ -177,7 +181,7 @@ const EmployeeInfo = (props) => {
               })
             }}>
 
-              <option value={`{"name":"","id":"null"}`} selected disabled hidden>პოზიცია</option>
+              <option value={`{"name":"","id":"null"}`}  >პოზიცია</option>
               {props.positions.filter((position) =>
                 (position.team_id == EmpInfo.team.team_id)
               ).map((filteredPosition) => (
@@ -222,7 +226,8 @@ const EmployeeInfo = (props) => {
           } className='pholder ph1'><span className='spn1'>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</span><span className='spn2'>ქართული მობ–ნომრის ფორმატი</span></p>
         </div>
         <div className='nextcont'>
-         <a> <input className='next' onClick={() => handleClick() ? navigate("/attributes/laptopinfo") : validateAll()} type="button" value="შემდეგი" /> </a>
+          
+         <input className='next' onClick={() => handleClick() ? tempp()  : validateAll()} type="button" value="შემდეგი" /> 
         </div>
       </form>
     </div>

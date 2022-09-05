@@ -223,18 +223,18 @@ const LaptopInfo = (props) => {
   }, [laptopInfo]);
   return (
     <div className='laptopinfo'>
-      {console.log(result)}
+
       <div className='container'>
         <div className='top'>
           <div id='image' className='uploadimage'>
             {result && <img className='uploadedimage' alt='YOUR SELECTED PHOTO' src={laptopInfo.img} />}
             <div id='success' className='contents'>
-              <img id='errorimg' src={error} style={{ display: "none" }} alt="" />
+              <img id='errorimg' src={err} style={{ display: "none" }} alt="" />
               <p id='imgname'>ჩააგდე ან ატვირთე</p>
               <p id='imgname1' style={{ transform: "translateY(-70%)", paddingBottom: "1rem" }}>ლეპტოპის ფოტო</p>
               <div id="uplbtn" style={{ width: "100%", transform: "translateX(-10%)" }}>
                 <input type="file" id='file' style={{ display: "none" }} name="file" onChange={(e) => handleFile(e)} multiple />
-                <label className='labelbtn' for="file">ატვირთე</label>
+                <label className='labelbtn'>ატვირთე</label>
               </div>
             </div>
             {result ?
@@ -248,7 +248,7 @@ const LaptopInfo = (props) => {
                 </div>
                 <div style={{ transform: "translateX(-43%)" }} className='inpp'>
                   <input type="file" id='file' style={{ display: "none" }} name="file" onChange={(e) => handleFile(e)} multiple />
-                  <label className='labelbtn' for="file">თავიდან ატვირთე</label>
+                  <label className='labelbtn' >თავიდან ატვირთე</label>
 
                 </div>
               </div> : null}
@@ -379,7 +379,7 @@ const LaptopInfo = (props) => {
                   })
                 }} >
                   <input checked={laptopInfo.memoryType == "ssd" ? "checked" : null} type="radio" id="ssd" name="ssdhdd" value="ssd" />
-                  <label for="ssd" style={{ paddingLeft: ".7rem" }} >SSD</label>
+                  <label style={{ paddingLeft: ".7rem" }} >SSD</label>
                 </div>
                 <div style={{ paddingLeft: "2rem" }} className='hdd' onChange={(e) => {
                   setlaptopInfo({
@@ -388,7 +388,7 @@ const LaptopInfo = (props) => {
                   })
                 }} >
                   <input checked={laptopInfo.memoryType == "hdd" ? "checked" : null} type="radio" id="hdd" name="ssdhdd" value="hdd" />
-                  <label for="hdd" style={{ paddingLeft: ".7rem" }} >HDD</label>
+                  <label  style={{ paddingLeft: ".7rem" }} >HDD</label>
                 </div>
               </div>
             </div>
@@ -452,7 +452,7 @@ const LaptopInfo = (props) => {
                   })
                 }} >
                   <input checked={laptopInfo.laptopCond == "new" ? "checked" : null} type="radio" id="new" name="newold" value="new" />
-                  <label for="n32" style={{ paddingLeft: ".7rem" }} >ახალი</label>
+                  <label style={{ paddingLeft: ".7rem" }} >ახალი</label>
                 </div>
                 <div style={{ paddingLeft: "2rem" }} className='hdd' onChange={(e) => {
                   setlaptopInfo({
@@ -461,7 +461,7 @@ const LaptopInfo = (props) => {
                   })
                 }} >
                   <input checked={laptopInfo.laptopCond == "used" ? "checked" : null} type="radio" className='inputradio' id="used" name="newold" value="used" />
-                  <label for="used" style={{ paddingLeft: ".7rem" }} >მეორადი</label>
+                  <label style={{ paddingLeft: ".7rem" }} >მეორადი</label>
                 </div>
               </div>
             </div>

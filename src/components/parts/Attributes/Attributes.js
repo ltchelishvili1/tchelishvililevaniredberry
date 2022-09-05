@@ -1,9 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './Attributes.css'
 import logo from '../../assets/LOGO-10 2.png'
 import back from '../../assets/back.png'
+import { useLocation } from "react-router-dom";
 const Attributes = () => {
+    const [count, setCount] = useState(0)
+    const [isMobile, setIsMobile] = useState(false)
+    useEffect(() => {
+        window.screen.width <= 830 ? setIsMobile(true) : setIsMobile(false);
+    }, [window.screen.width]);
+
+    function detectWindowSize() {
+        window.innerWidth <= 760 ? setIsMobile(true) : setIsMobile(false);
+    }
+
+    window.onresize = detectWindowSize;
+
+    useEffect(() => {
+        if (isMobile) {
+
+            if (window.location.href.includes("employeeinfo")) {
+                if (document.getElementById("lapt")) {
+                    document.getElementById("lapt").style.display = "none"
+                    document.getElementById("try").style.display = "none"
+                }
+            } else if (window.location.href.includes("laptopinfo")) {
+                if (document.getElementById("emply")) {
+                    document.getElementById("emply").style.display = "none"
+                    document.getElementById("hrr2").style.display = "none"
+                }
+
+            }
+        } else {
+            if (window.location.href.includes("employeeinfo")) {
+                if (document.getElementById("lapt")) {
+                    document.getElementById("lapt").style.display = "block"
+                    document.getElementById("try").style.display = "block"
+                }
+            } else if (window.location.href.includes("laptopinfo")) {
+                if (document.getElementById("emply")) {
+                    document.getElementById("emply").style.display = "block"
+                    document.getElementById("hrr2").style.display = "block"
+                }
+
+            }
+        }
+    }, [isMobile,count])
+
+
+
+
+
     const navigate = useNavigate()
     function handleClick(x) {
         if (document.body.offsetWidth + 16 > 829) {
@@ -18,13 +66,12 @@ const Attributes = () => {
 
     }
 
-
     return (
         <div className='all'>
 
-            <img src={back} alt="" className='backarrow' style={{ scale: "2", cursor: "pointer", transform: "translate(600%,300%)" }} onClick={() => 
-               {window.location.reload(); 
-                navigate(-1)}} />
+          <a href={
+            window.location.href.includes("employeeinfo") ? "/" : "/attributes/employeeinfo"
+          }>  <img src={back} alt="" className='backarrow' style={{ scale: "2", cursor: "pointer", transform: "translate(600%,300%)" }} /></a>
             <div className='nav'>
                 <div id='emply' className='empp mobdispempp'>
                     <div >
