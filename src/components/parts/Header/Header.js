@@ -13,9 +13,9 @@ const Header = () => {
             <img src={group} className="mobpict" alt="frame" />
             <form>
                 <div className='btnup'>
-                    <a  href="/attributes/employeeinfo">
+                    <Link  to="/attributes/employeeinfo">
                         <input type="button" value="ჩანაწერის დამატება" />
-                    </a>
+                    </Link>
 
                 </div>
                 <div className='btndown'>
