@@ -1,7 +1,7 @@
 import React from 'react'
 import './Popup.css'
 import succFram from '../../assets/succFrame.png'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 function Popup(props) {
     const navigate = useNavigate()
     return (props.trigger) ? (
