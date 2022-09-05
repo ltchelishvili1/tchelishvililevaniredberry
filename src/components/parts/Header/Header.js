@@ -11,12 +11,11 @@ const Header = () => {
             <img src={logo} className="main-page-logo" alt="logo" />
             <img src={frame} className="main-page-frame" alt="frame" />
             <img src={group} className="mobpict" alt="frame" />
-            <div></div>
             <form>
                 <div className='btnup'>
-                    <Link  href="attributes/employeeinfo">
+                    <a  href="/attributes/employeeinfo">
                         <input type="button" value="ჩანაწერის დამატება" />
-                    </Link>
+                    </a>
 
                 </div>
                 <div className='btndown'>
