@@ -109,7 +109,7 @@ function App() {
            
       <Routes>
         <Route path='/tchelishvililevaniredberry' element={<Header />} />
-        <Route path="tchelishvililevaniredberry/attributes" element={<Attributes />}>
+        <Route path="/attributes" element={<Attributes />}>
           <Route path="employeeinfo" element={<EmployeeInfo teams={teams} positions={positions} />} />
           <Route path="laptopinfo" element={<LaptopInfo brands={brands} cpus={cpus} />} />
         </Route>
